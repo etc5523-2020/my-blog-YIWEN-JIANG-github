@@ -2,15 +2,12 @@
 bio: My research interests include distributed robotics, mobile computing and programmable matter.
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: Master of Business Analytics
+    institution: Monash
+    year: 2020
+  - course: Bachelor of Accounting
+    institution: Monash
+    year: 2017
 email: "yjia0021@student.monash.edu"
 interests:
 - Statistics
@@ -32,7 +29,7 @@ social:
   link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/YIWEN-JIANG-github
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/
@@ -42,4 +39,4 @@ user_groups:
 - Principal Investigators
 ---
 
-Hi! I'm Yiwen.
+Hi! I'm Yiwen. Nice to meet you! :stuck_out_tongue_winking_eye:
