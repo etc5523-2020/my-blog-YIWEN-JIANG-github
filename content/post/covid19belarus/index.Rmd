@@ -1,0 +1,205 @@
+---
+title: COVID-19 on Belarus
+author: Yiwen Jiang
+date: '2020-08-27'
+slug: blog1
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-08-27T16:03:43+10:00'
+featured: no
+image:
+  caption: 'Copyright: AP Photo/Sergei Grits'
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(DT)
+library(naniar)
+library(formattable)
+library(plotly)
+library(lubridate)
+```
+
+```{r read-data, echo=FALSE, message=FALSE, warning=FALSE}
+covid <- read_csv(here::here("content/post/covid19belarus/data/owid-covid-data.csv"), 
+                  col_types = cols(.default = col_number(), 
+                                   iso_code = col_character(),
+                                   continent = col_character(),
+                                   location = col_character(),
+                                   date = col_date()))
+
+# c(rep(c(col_character()), 3), col_guess(), rep(c(col_number()), 36))
+covid_variable <- read_csv(here::here("content/post/covid19belarus/data/covid_variables.csv"))
+```
+
+On 12 Jan 2020, the World Health Organization ([WHO](https://www.who.int/emergencies/diseases/novel-coronavirus-2019?gclid=Cj0KCQjwhb36BRCfARIsAKcXh6HGffRtt26X3qt-VVSmrII_HDzmzy91XMwQAD5X_t3pskQi_dvdFa0aArb-EALw_wcB)) confirmed a novel coronavirus and named it _2019-nCoV_. Coronavirus is a large virus family, known to cause colds and more serious diseases such as Middle East Respiratory Syndrome (MERS) and Severe Acute Respiratory Syndrome (SARS). The new type of Coronavirus is a new strain of Coronavirus that has never been found in the human body before. Since December 2019, Wuhan City, Hubei Province has continued to carry out influenza and related disease surveillance, and multiple cases of viral pneumonia have been found, all diagnosed as viral pneumonia / pulmonary infection. 
+
+After confirming the first cases of COVID-19 in Minsk on 28 Feb 2020, it was confirmed that the virus had spread to Belarus. 
+
+The COVID-19 data was collected by _[Our World in Data](https://ourworldindata.org/coronavirus)_; the dataset includes the number of confirmed cases, death, testing and other thirty-seven relevant variables of 209 countries (including Belarus). It was collected from multiple ways, such as the World Bank, National government reports and European Centre for Disease Prevention and Control.  The data stored in `owid-covid-data.csv` as CSV format. The following table presents each of the variables in the data set, its descriptions and the data sources.
+
+
+
+```{r, echo=FALSE}
+covid_variable <- covid_variable %>%
+  datatable(class = "hover row-border stripe",
+            colnames = c("Variable", "Description", "Source"),
+            caption = 'Description and source of variables in COVID-19 data',
+            options = list(pageLength = 5))
+
+widgetframe::frameWidget(covid_variable, height = 700, width = 667)
+```
+
+
+The following table presents the summary of the dataset (filter out the other countries, except Belarus), including the data type, missing values and some statistics variables. 
+
+```{r, echo=FALSE}
+data_summ <- covid %>%
+  filter(location == "Belarus") %>%
+  skimr::skim() 
+```
+
+```{r table1, echo=FALSE}
+kable(data_summ[1:3,2:9],
+      caption = "Variable type: character") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), 
+                font_size = 11)
+```
+
+```{r table2, echo=FALSE}
+kable(data_summ[4,c(2:4, 10:13)],
+      caption = "Variable type: Date") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), 
+                font_size = 12,
+                full_width = TRUE)
+```
+
+```{r table3, echo=FALSE}
+kable(data_summ[5:40,c(2:4, 14, 15, 21)],
+      caption = "Variable type: numeric") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), 
+                font_size = 11) %>%
+  scroll_box(width = "710px", height = "200px")
+```
+
+
+
+When we look at the data summary tables (Refer to Table \@ref(tab:table1), Table \@ref(tab:table2), Table \@ref(tab:table3)) of the dataset on the above, there is some information about the __COVID-19 data on Belarus__:  
+
+
+- The dimension of dataset is 244 rows and 40 columns. That indicates there are 244 days recorded with 40 variables.  
+- There are three types of data in the dataset, which are character, date and numeric, and most type of variables is numeric.  
+- The dataset has been collected since 31 Dec 2019, and it is updated daily. The data collection date for the analysis of this blog is up to the date of writing (30 Aug 2020).  
+- For the numeric variables, most of those only have a low proportion of missing values. However, there are a large proportion of testing data are missing.  
+
+Although some of the data are missing. Nonetheless, this has little impact on the overall analysis. These tables provide some guidance for further exploration. How the number of cases and deaths changed? With the number of cases increasing, does the positive rate of testing increasing? Does the number of cases exceed the capacity of the hospital in Belarus?
+
+
+```{r table4, echo=FALSE, message=FALSE}
+summary_table <- covid %>%
+  filter(location == "Belarus",
+         date > "2019-12-31") %>%
+  select(date, total_cases, new_cases, total_deaths, new_deaths, positive_rate) %>%
+  mutate(mounth = month(date, label = TRUE)) %>%
+  group_by(mounth) %>%
+  summarise(cum_cases = max(total_cases, na.rm = TRUE),
+            avg_new_cases = round(mean(new_cases, na.rm = TRUE), 0),
+            max_new_cases = max(new_cases, na.rm = TRUE),
+            min_new_cases = min(new_cases, na.rm = TRUE),
+            cum_deaths = max(total_deaths, na.rm = TRUE),
+            avg_new_deaths = round(mean(new_deaths, na.rm = TRUE), 0),
+            max_new_deaths = max(new_deaths, na.rm = TRUE),
+            min_new_deaths = min(new_deaths, na.rm = TRUE),
+            avg_positive_rate = mean(positive_rate, na.rm = TRUE)) 
+
+summary_table$cum_cases <- scales::comma(summary_table$cum_cases, accuracy = 1)
+
+summary_table %>%
+  kable(col.names = c("Month",
+                      "Cumulative", "Average", "Max", "Min",
+                      "Cumulative", "Average", "Max", "Min",
+                      "Positive Rate"),
+        caption = "Statistics Summary of COVID-19 Data") %>%
+  kable_styling(full_width = 240, font_size = 11) %>%
+  add_header_above(c(" " = 1, "Confirmed Cases" = 4, "Death" = 4, "Testing" = 1))
+```
+
+When we are looking at the summary table (Refer to Table \@ref(tab:table4))of COIVD-19 data in Belarus, so far, the cumulative number of confirmed cases in Belarus is __71,523__ (until 30 Aug 2020). The monthly average number of daily new cases were decreasing since May, which has the highest number of average daily new cases. After May, the monthly average daily new deaths are also decreasing. It seems that Belarus has performed very well on COVID-19 and has controlled the pandemic (the number of daily new confirmed cases is declining). However, if we compare with the number of deaths with other countries, even the maximum number in Belarus is much lower than others which has a better health-care system. We will discuss this in further exploration.
+
+```{r, echo=FALSE, warning=FALSE}
+accumulate_by <- function(dat, var) {
+  var <- lazyeval::f_eval(var, dat)
+  lvls <- plotly:::getLevels(var)
+  dats <- lapply(seq_along(lvls), function(x) {
+    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
+  })
+  dplyr::bind_rows(dats)
+}
+
+
+p1 <- covid %>%
+  filter(location == "Belarus",
+         date > "2019-12-31") %>%
+  mutate(month = month(date)) %>%
+  nest_by(month) %>%
+  accumulate_by(~month) %>%
+  unnest() %>%
+  ggplot(aes(x = date, y = new_cases, frame = frame)) +
+  geom_line() +
+  theme_bw()
+
+fig <- ggplotly(p1) %>%
+  layout(yaxis = list(
+           title = "Numbers",
+           zeroline = F,
+           tickprefix = "$"),
+         xaxis = list(
+           title = "Month",
+           zeroline = F, 
+           showgrid = F)) %>% 
+  animation_opts(frame = 100, 
+                 transition = 0) %>%
+  animation_slider()
+```
+
+```{r fig1, fig.cap="COVID-19 on Belarus", echo=FALSE}
+fig
+```
+
+Like most countries, the number of confirmed cases in Belarus was very low before April. Based to the above figure (Figure \@ref(fig:fig1)), we can observe that the COVID-19 outbreak in Belarus after April, the number of confirmed cases has increased steeply, and the line of daily new cases has flattened since May, and then gradually decreased after June. Combined with the above table, we can also see that the average number of daily new cases increased over nine hundred in only two months. But this situation is not surprising. The government attitude of Belarus towards the pandemic is also reflecting on the president’s speech on the interviews. On 16 March, the President of Belarus, [Alexander Lukashenko](https://en.wikipedia.org/wiki/Alexander_Lukashenko), said that "*You just have to work, especially now, in a village [...] there, the tractor will heal everyone. The fields heal everyone.*". In the prior of that, he also proposed "**poisoning**" the coronavirus with vodka, as well as attending banyas as the best cures for the disease. We can conclude that the Belarusian government does not pay attention to the pandemic and has some slack in the pandemic (i.e. encourage people to continue to work outside).
+
+Unsurprisingly, Alexander Lukashenko also infected with COVID-19. After he recovered on 28 Jul, he still stated in an official meeting with military personnel that *COVID-19 poses no threat to life, and 97% of the population experience it in asymptomatic form*. For the above performance, it is difficult to imagine how Belarus controlled the pandemic after July. The accuracy and validity of the data are doubtful. Next, let us take a look at some news about the COVID-19 records in Belarus.  
+
+- According to Stepan Putilo, an independent Belarusian journalist and owner of the NEXTA Telegram channel, the government had falsified the official data on the COVID-19 pandemic progression in Belarus and published significantly lowered numbers.   
+-	In a further official clarification by the Ministry of Health, it was noted that the death rate presented during the webinar reflected the data on all the patients of "pulmonological profile" and included both confirmed COVID-19 patients and patients with "other pneumonia etiologies", contradictory to the slides of the webinar presentation mentioning the COVID-19 patients exclusively. The recording of the webinar was subsequently removed from YouTube.   
+
+In summary, we have reasons to doubt the accuracy of Belarus's COVID-19 data. If other users expected to use the official data for further analysis, users have to make adjustments to the data to reduce the bias caused by the data. We can observe that more attention paid to this pandemic, the more likely it is to end as soon as possible. Now Melbourne has 
+
+# Reference
+
+
+```{r, echo=FALSE, eval=FALSE}
+covid %>%
+  filter(location == "Belarus") %>%
+  miss_var_summary() %>%
+  rename(c("Variable" = "variable",
+           "Number of Missing Values" = "n_miss",
+           "Percentage of Missing Values" = "pct_miss")) %>%
+  kable(caption = "Missing values in COVID-19 data") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+
+# variable_na$pct_miss <- color_tile("white", "orange")(variable_na$pct_miss)
+```
+
+
+
+
+
