@@ -15,6 +15,7 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+bibliography: references.bib
 ---
 
 ```{r setup, message=FALSE, echo=FALSE}
@@ -43,9 +44,8 @@ On 12 Jan 2020, the World Health Organization ([WHO](https://www.who.int/emergen
 
 After confirming the first cases of COVID-19 in Minsk on 28 Feb 2020, it was confirmed that the virus had spread to Belarus. 
 
+# Data Description
 The COVID-19 data was collected by _[Our World in Data](https://ourworldindata.org/coronavirus)_; the dataset includes the number of confirmed cases, death, testing and other thirty-seven relevant variables of 209 countries (including Belarus). It was collected from multiple ways, such as the World Bank, National government reports and European Centre for Disease Prevention and Control.  The data stored in `owid-covid-data.csv` as CSV format. The following table presents each of the variables in the data set, its descriptions and the data sources.
-
-
 
 ```{r, echo=FALSE}
 covid_variable <- covid_variable %>%
@@ -56,7 +56,6 @@ covid_variable <- covid_variable %>%
 
 widgetframe::frameWidget(covid_variable, height = 700, width = 667)
 ```
-
 
 The following table presents the summary of the dataset (filter out the other countries, except Belarus), including the data type, missing values and some statistics variables. 
 
@@ -89,8 +88,6 @@ kable(data_summ[5:40,c(2:4, 14, 15, 21)],
   scroll_box(width = "710px", height = "200px")
 ```
 
-
-
 When we look at the data summary tables (Refer to Table \@ref(tab:table1), Table \@ref(tab:table2), Table \@ref(tab:table3)) of the dataset on the above, there is some information about the __COVID-19 data on Belarus__:  
 
 
@@ -101,6 +98,7 @@ When we look at the data summary tables (Refer to Table \@ref(tab:table1), Table
 
 Although some of the data are missing. Nonetheless, this has little impact on the overall analysis. These tables provide some guidance for further exploration. How the number of cases and deaths changed? With the number of cases increasing, does the positive rate of testing increasing? Does the number of cases exceed the capacity of the hospital in Belarus?
 
+# Data statistic summary
 
 ```{r table4, echo=FALSE, message=FALSE}
 summary_table <- covid %>%
@@ -182,24 +180,10 @@ Unsurprisingly, Alexander Lukashenko also infected with COVID-19. After he recov
 
 In summary, we have reasons to doubt the accuracy of Belarus's COVID-19 data. If other users expected to use the official data for further analysis, users have to make adjustments to the data to reduce the bias caused by the data. We can observe that more attention paid to this pandemic, the more likely it is to end as soon as possible. Now Melbourne has 
 
+# Acknowledgement
+
+Thanks for _[Our World in Data](https://ourworldindata.org/coronavirus)_ provided the COVID-19 dataset (@owidcoronavirus), also thanks for _Hugo_ to provide framework for building websites.  
+Packages used are @tidyverse, @plotly, @dt, @kableExtra, @lubridate, @naniar, @broom, @skimr, @owidcoronavirus and @blogdown.
+
 # Reference
-
-
-```{r, echo=FALSE, eval=FALSE}
-covid %>%
-  filter(location == "Belarus") %>%
-  miss_var_summary() %>%
-  rename(c("Variable" = "variable",
-           "Number of Missing Values" = "n_miss",
-           "Percentage of Missing Values" = "pct_miss")) %>%
-  kable(caption = "Missing values in COVID-19 data") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-
-
-# variable_na$pct_miss <- color_tile("white", "orange")(variable_na$pct_miss)
-```
-
-
-
-
 

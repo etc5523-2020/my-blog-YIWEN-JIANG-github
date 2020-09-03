@@ -39,4 +39,4 @@ user_groups:
 - Principal Investigators
 ---
 
-Hi! I'm Yiwen. Nice to meet you! :stuck_out_tongue_winking_eye:
+Hi! I'm Yiwen. Welcome to my blog! :stuck_out_tongue_winking_eye:
