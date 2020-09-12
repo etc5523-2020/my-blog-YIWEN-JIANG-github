@@ -19,9 +19,15 @@ projects: []
 bibliography: references.bib
 ---
 
-```{r set-up, message=FALSE}
+```{r set-up, message=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, messages=FALSE, warning=FALSE)
 library(tidyverse)
-library(rgdal)
+library(lubridate)
+library(highcharter)
+library(shiny)
+# devtools::install_github("ropenscilabs/rnaturalearth")
+library(rnaturalearth)
+library(plotly)
 ```
 
 ```{r read-data, message=FALSE}
@@ -44,11 +50,66 @@ Most of those cases are in Canada's two most populous provinces, Ontario and Que
 
 In mid March, as cases of community transmission were confirmed, all of Canada's provinces and territories declared states of emergency. Provinces and territories have, to varying degrees, implemented school and daycare closures, prohibitions on gatherings, closures of non-essential businesses, restrictions on entry, and mandatory self-isolation for travellers.
 
+                 
+
+```{r}
+daily_new <- prov_cases %>%
+  left_join(prov_mortality, by = c("province" = "province", "date_report" = "date_death_report")) %>%
+  left_join(prov_recovered, by = c("province" = "province", "date_report" = "date_recovered")) %>%
+  left_join(prov_testing, by = c("province" = "province", "date_report" = "date_testing")) %>%
+  select(province, date_report, "Cases" = cases)
+```
+
+
+```{r}
+time_series <- daily_new %>%
+  mutate(Date = dmy(date_report)) %>%
+  hchart("line", hcaes(x = Date, y = Cases, group = province))
+
+widgetframe::frameWidget(time_series, width = 720)
+```
+
+
+```{r, eval=FALSE}
+# devtools::install_github("hrbrmstr/streamgraph")
+library(streamgraph)
+ 
+# Create data:
+data <- data.frame(
+  year=rep(seq(1990,2016) , each=10),
+  name=rep(letters[1:10] , 27),
+  value=sample( seq(0,1,0.0001) , 270)
+)
+ 
+# Stream graph with a legend
+streamgraph(data, key="name", value="value", date="year", height="300px", width="1000px") %>%
+  sg_legend(show=TRUE, label="names: ")
+```
 
 ```{r}
 
+canada_map <- ne_states(country = "Canada", returnclass = "sf") 
+canada_map[2, 9] = "BC"
+canada_map[10, 9] = "NL"
+canada_map[12, 9] = "NWT"
+canada_map[13, 9] = "PEI"
+canada_map[6, 9] = "Quebec"
 ```
 
+```{r}
+test <- canada_map %>%
+  inner_join(prov_active, by = c("name" = "province")) %>%
+  filter(date_active == max(prov_active$date_active))
+
+map <- plot_ly(test, split = ~name, color = ~cumulative_cases, colors = "OrRd", stroke = I("black"),
+        text = ~paste("31-08-2020: ", "\n Total Cumulative \n Cases in ", name, "is ", cumulative_cases), 
+        hoveron = "fills",
+        hoverinfo = "text") %>%
+  layout(title = "xxxxxxxxxxxxxxx",
+         showlegend = FALSE) 
+
+widgetframe::frameWidget(map, width = 720)
+```
 
 
 
