@@ -17,6 +17,7 @@ image:
   preview_only: no
 projects: []
 bibliography: references.bib
+runtime: shiny
 ---
 
 ```{r set-up, message=FALSE, echo=FALSE}
@@ -28,6 +29,8 @@ library(shiny)
 # devtools::install_github("ropenscilabs/rnaturalearth")
 library(rnaturalearth)
 library(plotly)
+library(widgetframe)
+library(kableExtra)
 ```
 
 ```{r read-data, message=FALSE}
@@ -50,7 +53,64 @@ Most of those cases are in Canada's two most populous provinces, Ontario and Que
 
 In mid March, as cases of community transmission were confirmed, all of Canada's provinces and territories declared states of emergency. Provinces and territories have, to varying degrees, implemented school and daycare closures, prohibitions on gatherings, closures of non-essential businesses, restrictions on entry, and mandatory self-isolation for travellers.
 
-                 
+
+
+```{r}
+summary_table <- canada_active %>%
+  filter(date_active == "10-09-2020") %>%
+  select("Total Cases" = cumulative_cases,
+         "Total Recovered" = cumulative_recovered,
+         "Total Deaths" = cumulative_deaths,
+         "Active Cases" = active_cases) 
+
+summary_table$`Total Cases` <- scales::comma(summary_table$`Total Cases`, accuracy = 1)
+summary_table$`Total Recovered` <- scales::comma(summary_table$`Total Recovered`, accuracy = 1)
+summary_table$`Total Deaths` <- scales::comma(summary_table$`Total Deaths`, accuracy = 1)
+summary_table$`Active Cases` <- scales::comma(summary_table$`Active Cases`, accuracy = 1)
+
+summary_table %>%
+  kable(caption = "Summary of COVID-19 data of Canada") %>%
+  kable_classic(html_font = "Cambria") %>%
+  kable_styling(full_width = 600, font_size = 24)
+```
+
+
+```{r}
+canada_map <- ne_states(country = "Canada", returnclass = "sf") 
+canada_map[2, 9] = "BC"
+canada_map[10, 9] = "NL"
+canada_map[12, 9] = "NWT"
+canada_map[13, 9] = "PEI"
+canada_map[6, 9] = "Quebec"
+```
+
+```{r, warning=FALSE}
+test <- canada_map %>%
+  inner_join(prov_active, by = c("name" = "province")) %>%
+  filter(date_active == max(prov_active$date_active))
+
+map <- plot_ly(test, split = ~name, color = ~cumulative_cases, colors = "OrRd", stroke = I("black"),
+        text = ~paste("31-08-2020: ", "\n Total Cumulative \n Cases in ", name, "is ", cumulative_cases), 
+        hoveron = "fills",
+        hoverinfo = "text") %>%
+  layout(showlegend = FALSE) 
+
+widgetframe::frameWidget(map, width = 720)
+```
+
+```{r}
+canada_cases %>%
+  inner_join(canada_testing, by = c("date_report" = "date_testing")) %>%
+  mutate(date = dmy(date_report)) %>%
+  ggplot(aes(y = cases / testing, x = date)) +
+  geom_point() +
+  ylab("Positive Rate") +
+  xlab("") +
+  theme_light() +
+  geom_smooth()
+```
+
+
 
 ```{r}
 daily_new <- prov_cases %>%
@@ -61,7 +121,7 @@ daily_new <- prov_cases %>%
 ```
 
 
-```{r}
+```{r, fig.cap="Time series of COVID-19"}
 time_series <- daily_new %>%
   mutate(Date = dmy(date_report)) %>%
   hchart("line", hcaes(x = Date, y = Cases, group = province))
@@ -86,31 +146,25 @@ streamgraph(data, key="name", value="value", date="year", height="300px", width=
   sg_legend(show=TRUE, label="names: ")
 ```
 
-```{r}
 
-canada_map <- ne_states(country = "Canada", returnclass = "sf") 
-canada_map[2, 9] = "BC"
-canada_map[10, 9] = "NL"
-canada_map[12, 9] = "NWT"
-canada_map[13, 9] = "PEI"
-canada_map[6, 9] = "Quebec"
-```
 
 ```{r}
-test <- canada_map %>%
-  inner_join(prov_active, by = c("name" = "province")) %>%
-  filter(date_active == max(prov_active$date_active))
-
-map <- plot_ly(test, split = ~name, color = ~cumulative_cases, colors = "OrRd", stroke = I("black"),
-        text = ~paste("31-08-2020: ", "\n Total Cumulative \n Cases in ", name, "is ", cumulative_cases), 
-        hoveron = "fills",
-        hoverinfo = "text") %>%
-  layout(title = "xxxxxxxxxxxxxxx",
-         showlegend = FALSE) 
-
-widgetframe::frameWidget(map, width = 720)
+library(lubridate)
+canada_testing %>%
+  mutate(date = dmy(date_testing),
+         week = wday(date, abbr = FALSE, label = TRUE, week_start = getOption("lubridate.week.start", 1))) %>%
+  ggplot() +
+  geom_boxplot(aes(x = week, y = testing, group = week))
 ```
 
+
+```{r}
+canada_cases %>%
+  mutate(date = dmy(date_report),
+         week = wday(date, abbr = FALSE, label = TRUE, week_start = getOption("lubridate.week.start", 1))) %>%
+  ggplot() +
+  geom_boxplot(aes(x = week, y = cases, group = week))
+```
 
 
 
