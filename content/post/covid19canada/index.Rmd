@@ -1,5 +1,5 @@
 ---
-title: How is the pandemic in Canada?
+title: How is the Pandemic in Canada?
 author: Yiwen Jiang
 date: '2020-09-11'
 slug: covid-19-on-canada
