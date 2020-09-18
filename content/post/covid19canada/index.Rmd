@@ -1,5 +1,5 @@
 ---
-title: COVID-19 on Canada
+title: How is the pandemic in Canada?
 author: Yiwen Jiang
 date: '2020-09-11'
 slug: covid-19-on-canada
@@ -25,7 +25,6 @@ knitr::opts_chunk$set(echo = FALSE, messages=FALSE, warning=FALSE)
 library(tidyverse)
 library(lubridate)
 library(highcharter)
-library(shiny)
 # devtools::install_github("ropenscilabs/rnaturalearth")
 library(rnaturalearth)
 library(plotly)
@@ -47,15 +46,18 @@ prov_testing <- read_csv(here::here("content/post/covid19canada/data/testing_tim
 ```
 
 
-The virus was confirmed to have reached Canada on January 27, 2020, after an individual who had returned to Toronto from Wuhan, Hubei, China, tested positive. As of August 19, 2020, there have been approximately 123,500 confirmed cases, over 109,000 recoveries and just over 9,000 deaths in the country. The Government of Canada has released modelling anticipating 11,000–22,000 deaths over the course of the pandemic, assuming "stronger epidemic control". 
+After a person returned to Toronto from Wuhan, Hubei, China, tested positive, it was confirmed that the virus had reached Canada on January 27, 2020. The first case of community transmission in Canada was confirmed in British Columbia on March 5, and Toronto's chief health officer announced on March 16 that there is "some evidence of community transmission".
 
-Most of those cases are in Canada's two most populous provinces, Ontario and Quebec. Confirmed cases have been reported in all of Canada's provinces and territories, with the exception of Nunavut. An additional 13 cases involve repatriated citizens from the Grand Princess cruise ship. The first case of community transmission in Canada was confirmed in British Columbia on March 5, and Toronto's chief health officer announced on March 16 that there is "some evidence of community transmission".
+In mid-March, as cases of community transmission were confirmed, all of Canada's provinces and territories declared states of emergency. Provinces and territories have, to varying degrees, implemented school and daycare closures, prohibitions on gatherings, closures of non-essential businesses, restrictions on entry, and mandatory self-isolation for travelers.
 
-In mid March, as cases of community transmission were confirmed, all of Canada's provinces and territories declared states of emergency. Provinces and territories have, to varying degrees, implemented school and daycare closures, prohibitions on gatherings, closures of non-essential businesses, restrictions on entry, and mandatory self-isolation for travellers.
+Canada’s COVID-19 data was collected by [COVID-19 Canada Open Data Working Group](https://github.com/ishaberry/Covid19Canada); the dataset includes the number of confirmed cases, deaths and testing data. It is also separate the data into a different province. The datasets are stored in separate `.csv` files. By exploring these datasets, we will discover some stories that are related to the datasets.
+
+# Why there is a vast number of confirmed cases in Canada?
+
+Canada and Australia have always been used to compare between each other because the two countries have much in common: beautiful scenery, vast space, sparse population, metropolitan cities with large numbers of international tourists, and well-funded health systems.
 
 
-
-```{r}
+```{r summ-table}
 summary_table <- canada_active %>%
   filter(date_active == "10-09-2020") %>%
   select("Total Cases" = cumulative_cases,
@@ -70,10 +72,16 @@ summary_table$`Active Cases` <- scales::comma(summary_table$`Active Cases`, accu
 
 summary_table %>%
   kable(caption = "Summary of COVID-19 data of Canada") %>%
-  kable_classic(html_font = "Cambria") %>%
-  kable_styling(full_width = 600, font_size = 24)
+  kable_styling(full_width = 600, font_size = 24, position = "center")
 ```
 
+At the beginning of 2020, Canada and Australia had similar COVID-19 experiences, but they started to differ from each other in dramatic ways at the end of March. As of September 10, 2020, there have been approximately 136,825 confirmed cases, over 118,990 recoveries, over 9,205 deaths and 8,630 cases in the Canada (Refer to Table \@ref(tab:summ-table)).  Compared to Australia, the data is even more impressive. As of September 10, there are total 26,692 cumulated confirmed cases in Australia. The cumulative number of confirmed cases fewer than Canada over one million!  
+
+Although both countries have implemented distancing measures, the effect is not satisfactory: 
+
+> In mid-March, Canadians held a large wedding in Montreal, and Australians enjoyed the sun at Bondi Beach in Sydney.
+
+Therefore, it is necessary to strengthen restrictions and strengthen law enforcement. The two countries are also testing COVID-19 at a similar rate. But by the end of March, the number of new daily cases in Australia start to decline, while the number of cases in Canada increased sharply. Why have the paths of these two countries with seemingly similar approaches to the pandemic diverged?
 
 ```{r}
 canada_map <- ne_states(country = "Canada", returnclass = "sf") 
@@ -84,33 +92,49 @@ canada_map[13, 9] = "PEI"
 canada_map[6, 9] = "Quebec"
 ```
 
-```{r, warning=FALSE}
-test <- canada_map %>%
+```{r canada-map, warning=FALSE, message=FALSE, fig.cap="Compared with the northern region of Canada, the number of cases in the southern provinces seems to be higher, especially in Ontario and Quebec."}
+map <- canada_map %>%
   inner_join(prov_active, by = c("name" = "province")) %>%
   filter(date_active == max(prov_active$date_active))
 
-map <- plot_ly(test, split = ~name, color = ~cumulative_cases, colors = "OrRd", stroke = I("black"),
+map <- plot_ly(map, split = ~name, 
+               color = ~cumulative_cases, 
+               colors = "OrRd", 
+               stroke = I("black"),
         text = ~paste("31-08-2020: ", "\n Total Cumulative \n Cases in ", name, "is ", cumulative_cases), 
         hoveron = "fills",
         hoverinfo = "text") %>%
-  layout(showlegend = FALSE) 
+  layout(showlegend = FALSE)
 
 widgetframe::frameWidget(map, width = 720)
 ```
 
-```{r}
+Most of the early cases in Australia were imported from overseas travelers and passed on to their direct contacts. It is relatively easy for people arriving by plane or ship to pass through strict contact tracing, which is even more difficult when travelers drive across long-distance borders (such as the border separating Canada and the United States). From the map (Figure \@ref(fig:canada-map)), we can see the cases are in provinces or territories in northern of Canada are much less than the southern which is the border with the United States. Especially in Ontario and Quebec, the total number was exceeding 100,000. 
+
+This is because, Although Canada and the United States have reached an agreement since the beginning of the pandemic to close their borders for "non-essential" travel on March 21, 2020. There are still many Americans who have been taking advantage of the so-called "Alaska loophole" Enter Canada. It has been reported that those who discovered the loophole, tell the authorities that they were only on the way to Alaska, USA via Canada. This has led to a rapid increase in the number of confirmed cases in the southern provinces and territories of Canada, especially in the densely populated Ontario and Quebec.
+
+Today, as a neighbor of Canada and the country with the largest number of cases in the world, the United States is continuing to grow at a daily rate of more than 30,000. Therefore, it is necessary for Canada to pay attention to the border issue because if cases imported from the United States are not well prevented, Canada will be affected for a very long time.
+
+# Is Canada’s second wave coming?
+
+The first wave of COVID-19 has gradually subsided in Canada, and the number of daily cases and hospitalization rates have dropped to levels not seen since the beginning of the pandemic.
+
+```{r positive-rate, fig.cap="The positive rate began to decline after March, and began to rise again after August.", message=FALSE}
 canada_cases %>%
   inner_join(canada_testing, by = c("date_report" = "date_testing")) %>%
   mutate(date = dmy(date_report)) %>%
   ggplot(aes(y = cases / testing, x = date)) +
   geom_point() +
+  ggtitle("Canada positive rate trend") +
   ylab("Positive Rate") +
   xlab("") +
   theme_light() +
-  geom_smooth()
+  geom_smooth() 
 ```
 
+However, with more than 6,000 cases of COVID-19 active throughout the weekend, Canadians are urged to stay vigilant and take adequate public health measures until the long weekend. Ontario, Quebec, Alberta, and British Columbia have all recently found that the number of active COVID-19 cases has been steadily increasing, and there have not been some records since the peak of the outbreak. We can also observe from Figure \@ref(fig:positive-rate), that although the positive rate has dropped to about 0.01 after the first wave, the overall trend has been moving upward recently.
 
+> "COVID-19 does not take holidays."
 
 ```{r}
 daily_new <- prov_cases %>%
@@ -120,8 +144,7 @@ daily_new <- prov_cases %>%
   select(province, date_report, "Cases" = cases)
 ```
 
-
-```{r, fig.cap="Time series of COVID-19"}
+```{r daily-cases, fig.cap="After August, the number of daily new cases in Alberta and BC rebound again. By click the legend to hide or show the line of that ptovince."}
 time_series <- daily_new %>%
   mutate(Date = dmy(date_report)) %>%
   hchart("line", hcaes(x = Date, y = Cases, group = province))
@@ -129,44 +152,17 @@ time_series <- daily_new %>%
 widgetframe::frameWidget(time_series, width = 720)
 ```
 
+At the same time, the number of daily new cases are also increasing in multiple provinces and has raised concerns about a potential second wave. In Figure \@ref(fig:daily-cases), it presents the changing of daily new cases in different province or territories. Infectious disease specialist Dr. Isaac Bogoch says this surge in infections might 'very well' be the start of that next phase in the pandemic, and that current upward trends in B.C., Alberta, Manitoba, Ontario and Quebec may be fuelling Canada’s second wave of coronavirus infections.
 
-```{r, eval=FALSE}
-# devtools::install_github("hrbrmstr/streamgraph")
-library(streamgraph)
- 
-# Create data:
-data <- data.frame(
-  year=rep(seq(1990,2016) , each=10),
-  name=rep(letters[1:10] , 27),
-  value=sample( seq(0,1,0.0001) , 270)
-)
- 
-# Stream graph with a legend
-streamgraph(data, key="name", value="value", date="year", height="300px", width="1000px") %>%
-  sg_legend(show=TRUE, label="names: ")
-```
+China moved quickly to quell a new coronavirus outbreak in Beijing on June, raising its emergency level, suspending reopening and canceling more than 60 per cent of flights in and out of the capital after reporting at least 256 new cases since early June. If Canada takes a similar approach to control new outbreaks, it foreseeable that they can avoid more drastic measures like shutting down non-essential businesses and reimposing lockdown measures across the country for the long term.
+
+# Acknowledgement
+
+Thanks for _[COVID-19 Canada Open Data Working Group](https://github.com/ishaberry/Covid19Canada)_ provided the COVID-19 datasets (@Covid19Canada), also thanks for _Hugo_ to provide framework for building websites.  
+Packages used are @tidyverse, @plotly, @highcharter, @kableExtra, @lubridate, @rnaturalearth, @widgetframe and @blogdown.
 
 
-
-```{r}
-library(lubridate)
-canada_testing %>%
-  mutate(date = dmy(date_testing),
-         week = wday(date, abbr = FALSE, label = TRUE, week_start = getOption("lubridate.week.start", 1))) %>%
-  ggplot() +
-  geom_boxplot(aes(x = week, y = testing, group = week))
-```
-
-
-```{r}
-canada_cases %>%
-  mutate(date = dmy(date_report),
-         week = wday(date, abbr = FALSE, label = TRUE, week_start = getOption("lubridate.week.start", 1))) %>%
-  ggplot() +
-  geom_boxplot(aes(x = week, y = cases, group = week))
-```
-
-
+# Reference
 
 
 

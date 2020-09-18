@@ -77,7 +77,7 @@
     </item>
     
     <item>
-      <title>COVID-19 on Canada</title>
+      <title>How is the pandemic in Canada?</title>
       <link>/post/covid-19-on-canada/</link>
       <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
       <guid>/post/covid-19-on-canada/</guid>
@@ -89,12 +89,15 @@
 &lt;script src=&#34;/rmarkdown-libs/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;The virus was confirmed to have reached Canada on January 27, 2020, after an individual who had returned to Toronto from Wuhan, Hubei, China, tested positive. As of August 19, 2020, there have been approximately 123,500 confirmed cases, over 109,000 recoveries and just over 9,000 deaths in the country. The Government of Canada has released modelling anticipating 11,000–22,000 deaths over the course of the pandemic, assuming “stronger epidemic control”.&lt;/p&gt;
-&lt;p&gt;Most of those cases are in Canada’s two most populous provinces, Ontario and Quebec. Confirmed cases have been reported in all of Canada’s provinces and territories, with the exception of Nunavut. An additional 13 cases involve repatriated citizens from the Grand Princess cruise ship. The first case of community transmission in Canada was confirmed in British Columbia on March 5, and Toronto’s chief health officer announced on March 16 that there is “some evidence of community transmission”.&lt;/p&gt;
-&lt;p&gt;In mid March, as cases of community transmission were confirmed, all of Canada’s provinces and territories declared states of emergency. Provinces and territories have, to varying degrees, implemented school and daycare closures, prohibitions on gatherings, closures of non-essential businesses, restrictions on entry, and mandatory self-isolation for travellers.&lt;/p&gt;
-&lt;table class=&#34; lightable-classic table&#34; style=&#34;font-family: Cambria; margin-left: auto; margin-right: auto; font-size: 24px; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;p&gt;After a person returned to Toronto from Wuhan, Hubei, China, tested positive, it was confirmed that the virus had reached Canada on January 27, 2020. The first case of community transmission in Canada was confirmed in British Columbia on March 5, and Toronto’s chief health officer announced on March 16 that there is “some evidence of community transmission”.&lt;/p&gt;
+&lt;p&gt;In mid-March, as cases of community transmission were confirmed, all of Canada’s provinces and territories declared states of emergency. Provinces and territories have, to varying degrees, implemented school and daycare closures, prohibitions on gatherings, closures of non-essential businesses, restrictions on entry, and mandatory self-isolation for travelers.&lt;/p&gt;
+&lt;p&gt;Canada’s COVID-19 data was collected by &lt;a href=&#34;https://github.com/ishaberry/Covid19Canada&#34;&gt;COVID-19 Canada Open Data Working Group&lt;/a&gt;; the dataset includes the number of confirmed cases, deaths and testing data. It is also separate the data into a different province. The datasets are stored in separate &lt;code&gt;.csv&lt;/code&gt; files. By exploring these datasets, we will discover some stories that are related to the datasets.&lt;/p&gt;
+&lt;div id=&#34;section-why-there-is-a-vast-number-of-confirmed-cases-in-canada&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Why there is a vast number of confirmed cases in Canada?&lt;/h1&gt;
+&lt;p&gt;Canada and Australia have always been used to compare between each other because the two countries have much in common: beautiful scenery, vast space, sparse population, metropolitan cities with large numbers of international tourists, and well-funded health systems.&lt;/p&gt;
+&lt;table class=&#34;table&#34; style=&#34;font-size: 24px; margin-left: auto; margin-right: auto;&#34;&gt;
 &lt;caption style=&#34;font-size: initial !important;&#34;&gt;
-&lt;span id=&#34;tab:unnamed-chunk-1&#34;&gt;Table 1: &lt;/span&gt;Summary of COVID-19 data of Canada
+&lt;span id=&#34;tab:summ-table&#34;&gt;Table 1: &lt;/span&gt;Summary of COVID-19 data of Canada
 &lt;/caption&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -129,22 +132,80 @@ Active Cases
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;pre&gt;&lt;code&gt;## No trace type specified:
-##   Based on info supplied, a &amp;#39;scatter&amp;#39; trace seems appropriate.
-##   Read more about this trace type -&amp;gt; https://plot.ly/r/reference/#scatter&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;At the beginning of 2020, Canada and Australia had similar COVID-19 experiences, but they started to differ from each other in dramatic ways at the end of March. As of September 10, 2020, there have been approximately 136,825 confirmed cases, over 118,990 recoveries, over 9,205 deaths and 8,630 cases in the Canada (Refer to Table &lt;a href=&#34;#tab:summ-table&#34;&gt;1&lt;/a&gt;). Compared to Australia, the data is even more impressive. As of September 10, there are total 26,692 cumulated confirmed cases in Australia. The cumulative number of confirmed cases fewer than Canada over one million!&lt;/p&gt;
+&lt;p&gt;Although both countries have implemented distancing measures, the effect is not satisfactory:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In mid-March, Canadians held a large wedding in Montreal, and Australians enjoyed the sun at Bondi Beach in Sydney.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Therefore, it is necessary to strengthen restrictions and strengthen law enforcement. The two countries are also testing COVID-19 at a similar rate. But by the end of March, the number of new daily cases in Australia start to decline, while the number of cases in Canada increased sharply. Why have the paths of these two countries with seemingly similar approaches to the pandemic diverged?&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:canada-map&#34;&gt;&lt;/span&gt;
 &lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:720px;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;url&#34;:&#34;/post/covid19canada/index_files/figure-html//widgets/widget_unnamed-chunk-3.html&#34;,&#34;options&#34;:{&#34;xdomain&#34;:&#34;*&#34;,&#34;allowfullscreen&#34;:false,&#34;lazyload&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/covid19canada/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-6&#34;&gt;&lt;/span&gt;
-&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:720px;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;url&#34;:&#34;/post/covid19canada/index_files/figure-html//widgets/widget_unnamed-chunk-6.html&#34;,&#34;options&#34;:{&#34;xdomain&#34;:&#34;*&#34;,&#34;allowfullscreen&#34;:false,&#34;lazyload&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;url&#34;:&#34;/post/covid19canada/index_files/figure-html//widgets/widget_canada-map.html&#34;,&#34;options&#34;:{&#34;xdomain&#34;:&#34;*&#34;,&#34;allowfullscreen&#34;:false,&#34;lazyload&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 1: Time series of COVID-19
+Figure 1: Compared with the northern region of Canada, the number of cases in the southern provinces seems to be higher, especially in Ontario and Quebec.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;/post/covid19canada/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/covid19canada/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Most of the early cases in Australia were imported from overseas travelers and passed on to their direct contacts. It is relatively easy for people arriving by plane or ship to pass through strict contact tracing, which is even more difficult when travelers drive across long-distance borders (such as the border separating Canada and the United States). From the map (Figure &lt;a href=&#34;#fig:canada-map&#34;&gt;1&lt;/a&gt;), we can see the cases are in provinces or territories in northern of Canada are much less than the southern which is the border with the United States. Especially in Ontario and Quebec, the total number was exceeding 100,000.&lt;/p&gt;
+&lt;p&gt;This is because, Although Canada and the United States have reached an agreement since the beginning of the pandemic to close their borders for “non-essential” travel on March 21, 2020. There are still many Americans who have been taking advantage of the so-called “Alaska loophole” Enter Canada. It has been reported that those who discovered the loophole, tell the authorities that they were only on the way to Alaska, USA via Canada. This has led to a rapid increase in the number of confirmed cases in the southern provinces and territories of Canada, especially in the densely populated Ontario and Quebec.&lt;/p&gt;
+&lt;p&gt;Today, as a neighbor of Canada and the country with the largest number of cases in the world, the United States is continuing to grow at a daily rate of more than 30,000. Therefore, it is necessary for Canada to pay attention to the border issue because if cases imported from the United States are not well prevented, Canada will be affected for a very long time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-is-canadas-second-wave-coming&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Is Canada’s second wave coming?&lt;/h1&gt;
+&lt;p&gt;The first wave of COVID-19 has gradually subsided in Canada, and the number of daily cases and hospitalization rates have dropped to levels not seen since the beginning of the pandemic.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:positive-rate&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/post/covid19canada/index_files/figure-html/positive-rate-1.png&#34; alt=&#34;The positive rate began to decline after March, and began to rise again after August.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: The positive rate began to decline after March, and began to rise again after August.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;However, with more than 6,000 cases of COVID-19 active throughout the weekend, Canadians are urged to stay vigilant and take adequate public health measures until the long weekend. Ontario, Quebec, Alberta, and British Columbia have all recently found that the number of active COVID-19 cases has been steadily increasing, and there have not been some records since the peak of the outbreak. We can also observe from Figure &lt;a href=&#34;#fig:positive-rate&#34;&gt;2&lt;/a&gt;, that although the positive rate has dropped to about 0.01 after the first wave, the overall trend has been moving upward recently.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“COVID-19 does not take holidays.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:daily-cases&#34;&gt;&lt;/span&gt;
+&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:720px;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;url&#34;:&#34;/post/covid19canada/index_files/figure-html//widgets/widget_daily-cases.html&#34;,&#34;options&#34;:{&#34;xdomain&#34;:&#34;*&#34;,&#34;allowfullscreen&#34;:false,&#34;lazyload&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: After August, the number of daily new cases in Alberta and BC rebound again. By click the legend to hide or show the line of that ptovince.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;At the same time, the number of daily new cases are also increasing in multiple provinces and has raised concerns about a potential second wave. In Figure &lt;a href=&#34;#fig:daily-cases&#34;&gt;3&lt;/a&gt;, it presents the changing of daily new cases in different province or territories. Infectious disease specialist Dr. Isaac Bogoch says this surge in infections might ‘very well’ be the start of that next phase in the pandemic, and that current upward trends in B.C., Alberta, Manitoba, Ontario and Quebec may be fuelling Canada’s second wave of coronavirus infections.&lt;/p&gt;
+&lt;p&gt;China moved quickly to quell a new coronavirus outbreak in Beijing on June, raising its emergency level, suspending reopening and canceling more than 60 per cent of flights in and out of the capital after reporting at least 256 new cases since early June. If Canada takes a similar approach to control new outbreaks, it foreseeable that they can avoid more drastic measures like shutting down non-essential businesses and reimposing lockdown measures across the country for the long term.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-acknowledgement&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Acknowledgement&lt;/h1&gt;
+&lt;p&gt;Thanks for &lt;em&gt;&lt;a href=&#34;https://github.com/ishaberry/Covid19Canada&#34;&gt;COVID-19 Canada Open Data Working Group&lt;/a&gt;&lt;/em&gt; provided the COVID-19 datasets (&lt;span class=&#34;citation&#34;&gt;(&lt;span class=&#34;citeproc-not-found&#34; data-reference-id=&#34;Covid19Canada&#34;&gt;&lt;strong&gt;???&lt;/strong&gt;&lt;/span&gt;)&lt;/span&gt;), also thanks for &lt;em&gt;Hugo&lt;/em&gt; to provide framework for building websites.&lt;br /&gt;
+Packages used are &lt;span class=&#34;citation&#34;&gt;Wickham et al. (2019)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;Sievert (2020)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;Kunst (2020)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;Zhu (2019)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;Grolemund and Wickham (2011)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;South (2020)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;Karambelkar (2017)&lt;/span&gt; and &lt;span class=&#34;citation&#34;&gt;Xie, Hill, and Thomas (2017)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-reference&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Reference&lt;/h1&gt;
+&lt;div id=&#34;section-refs&#34; class=&#34;references&#34;&gt;
+&lt;div id=&#34;section-ref-lubridate&#34;&gt;
+&lt;p&gt;Grolemund, Garrett, and Hadley Wickham. 2011. “Dates and Times Made Easy with lubridate.” &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 40 (3): 1–25. &lt;a href=&#34;http://www.jstatsoft.org/v40/i03/&#34;&gt;http://www.jstatsoft.org/v40/i03/&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-ref-widgetframe&#34;&gt;
+&lt;p&gt;Karambelkar, Bhaskar. 2017. &lt;em&gt;Widgetframe: ’Htmlwidgets’ in Responsive ’Iframes’&lt;/em&gt;. &lt;a href=&#34;https://CRAN.R-project.org/package=widgetframe&#34;&gt;https://CRAN.R-project.org/package=widgetframe&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-ref-highcharter&#34;&gt;
+&lt;p&gt;Kunst, Joshua. 2020. &lt;em&gt;Highcharter: A Wrapper for the ’Highcharts’ Library&lt;/em&gt;. &lt;a href=&#34;https://CRAN.R-project.org/package=highcharter&#34;&gt;https://CRAN.R-project.org/package=highcharter&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-ref-plotly&#34;&gt;
+&lt;p&gt;Sievert, Carson. 2020. &lt;em&gt;Interactive Web-Based Data Visualization with R, Plotly, and Shiny&lt;/em&gt;. Chapman; Hall/CRC. &lt;a href=&#34;https://plotly-r.com&#34;&gt;https://plotly-r.com&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-ref-rnaturalearth&#34;&gt;
+&lt;p&gt;South, Andy. 2020. &lt;em&gt;Rnaturalearth: World Map Data from Natural Earth&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-ref-tidyverse&#34;&gt;
+&lt;p&gt;Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” &lt;em&gt;Journal of Open Source Software&lt;/em&gt; 4 (43): 1686. &lt;a href=&#34;https://doi.org/10.21105/joss.01686&#34;&gt;https://doi.org/10.21105/joss.01686&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-ref-blogdown&#34;&gt;
+&lt;p&gt;Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. &lt;em&gt;Blogdown: Creating Websites with R Markdown&lt;/em&gt;. Boca Raton, Florida: Chapman; Hall/CRC. &lt;a href=&#34;https://github.com/rstudio/blogdown&#34;&gt;https://github.com/rstudio/blogdown&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-ref-kableExtra&#34;&gt;
+&lt;p&gt;Zhu, Hao. 2019. &lt;em&gt;KableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax&lt;/em&gt;. &lt;a href=&#34;https://CRAN.R-project.org/package=kableExtra&#34;&gt;https://CRAN.R-project.org/package=kableExtra&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
     </item>
     
