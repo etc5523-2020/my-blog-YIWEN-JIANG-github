@@ -133,7 +133,6 @@ canada_cases %>%
 
 However, with more than 6,000 cases of COVID-19 active throughout the weekend, Canadians are urged to stay vigilant and take adequate public health measures until the long weekend. Ontario, Quebec, Alberta, and British Columbia have all recently found that the number of active COVID-19 cases has been steadily increasing, and there have not been some records since the peak of the outbreak. We can also observe from Figure \@ref(fig:positive-rate), that although the positive rate has dropped to about 0.01 after the first wave, the overall trend has been moving upward recently.
 
-> "COVID-19 does not take holidays."
 
 ```{r}
 daily_new <- prov_cases %>%
@@ -143,15 +142,26 @@ daily_new <- prov_cases %>%
   select(province, date_report, "Cases" = cases)
 ```
 
-```{r daily-cases, fig.cap="After August, the number of daily new cases in Alberta and BC rebound again. By click the legend to hide or show the line of that ptovince."}
+```{r daily-cases, fig.cap="After August, the number of daily new cases in Alberta and BC rebound again. By click the legend to hide or show the line of that province."}
 time_series <- daily_new %>%
   mutate(Date = dmy(date_report)) %>%
-  hchart("line", hcaes(x = Date, y = Cases, group = province))
+  hchart("line", hcaes(x = Date, y = Cases, group = province)) %>%
+  hc_title(text = "Daily new cases in Canada",
+           margin = 20,
+           style = list(color = "black", useHTML = TRUE))
 
 widgetframe::frameWidget(time_series, width = 720)
 ```
 
 At the same time, the number of daily new cases are also increasing in multiple provinces and has raised concerns about a potential second wave. In Figure \@ref(fig:daily-cases), it presents the changing of daily new cases in different province or territories. Infectious disease specialist Dr. Isaac Bogoch says this surge in infections might 'very well' be the start of that next phase in the pandemic, and that current upward trends in B.C., Alberta, Manitoba, Ontario and Quebec may be fuelling Canada’s second wave of coronavirus infections.
+
+<center>
+<font size="6"> 
+
+ **"COVID-19 does not take holidays."**
+
+</font> 
+</center>
 
 China moved quickly to quell a new coronavirus outbreak in Beijing on June, raising its emergency level, suspending reopening and canceling more than 60 per cent of flights in and out of the capital after reporting at least 256 new cases since early June. If Canada takes a similar approach to control new outbreaks, it foreseeable that they can avoid more drastic measures like shutting down non-essential businesses and reimposing lockdown measures across the country for the long term.
 

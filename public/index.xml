@@ -159,17 +159,19 @@ Figure 2: The positive rate began to decline after March, and began to rise agai
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;However, with more than 6,000 cases of COVID-19 active throughout the weekend, Canadians are urged to stay vigilant and take adequate public health measures until the long weekend. Ontario, Quebec, Alberta, and British Columbia have all recently found that the number of active COVID-19 cases has been steadily increasing, and there have not been some records since the peak of the outbreak. We can also observe from Figure &lt;a href=&#34;#fig:positive-rate&#34;&gt;2&lt;/a&gt;, that although the positive rate has dropped to about 0.01 after the first wave, the overall trend has been moving upward recently.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;“COVID-19 does not take holidays.”&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:daily-cases&#34;&gt;&lt;/span&gt;
 &lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:720px;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;
 &lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;url&#34;:&#34;/post/covid19canada/index_files/figure-html//widgets/widget_daily-cases.html&#34;,&#34;options&#34;:{&#34;xdomain&#34;:&#34;*&#34;,&#34;allowfullscreen&#34;:false,&#34;lazyload&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 3: After August, the number of daily new cases in Alberta and BC rebound again. By click the legend to hide or show the line of that ptovince.
+Figure 3: After August, the number of daily new cases in Alberta and BC rebound again. By click the legend to hide or show the line of that province.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;At the same time, the number of daily new cases are also increasing in multiple provinces and has raised concerns about a potential second wave. In Figure &lt;a href=&#34;#fig:daily-cases&#34;&gt;3&lt;/a&gt;, it presents the changing of daily new cases in different province or territories. Infectious disease specialist Dr. Isaac Bogoch says this surge in infections might ‘very well’ be the start of that next phase in the pandemic, and that current upward trends in B.C., Alberta, Manitoba, Ontario and Quebec may be fuelling Canada’s second wave of coronavirus infections.&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;font size=&#34;6&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;“COVID-19 does not take holidays.”&lt;/strong&gt;&lt;/p&gt;
+&lt;/font&gt;
+&lt;/center&gt;
 &lt;p&gt;China moved quickly to quell a new coronavirus outbreak in Beijing on June, raising its emergency level, suspending reopening and canceling more than 60 per cent of flights in and out of the capital after reporting at least 256 new cases since early June. If Canada takes a similar approach to control new outbreaks, it foreseeable that they can avoid more drastic measures like shutting down non-essential businesses and reimposing lockdown measures across the country for the long term.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;acknowledgement&#34; class=&#34;section level1&#34;&gt;
