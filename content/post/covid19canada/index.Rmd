@@ -74,7 +74,7 @@ summary_table %>%
   kable_styling(full_width = 600, font_size = 24, position = "center")
 ```
 
-At the beginning of 2020, Canada and Australia had similar COVID-19 experiences, but they started to differ from each other in dramatic ways at the end of March. As of September 10, 2020, there have been approximately 136,825 confirmed cases, over 118,990 recoveries, over 9,205 deaths and 8,630 cases in the Canada (Refer to Table \@ref(tab:summ-table)).  Compared to Australia, the data is even more impressive. As of September 10, there are total 26,692 cumulated confirmed cases in Australia. The cumulative number of confirmed cases fewer than Canada over one million!  
+At the beginning of 2020, Canada and Australia had similar COVID-19 experiences, but they started to differ from each other in dramatic ways at the end of March. As of September 10, 2020, there have been approximately 136,825 confirmed cases, over 118,990 recoveries, over 9,205 deaths and 8,630 cases in Canada (Refer to Table \@ref(tab:summ-table)).  Compared to Australia, the data is even more impressive. As of September 10, there are total 26,692 cumulated confirmed cases in Australia. The cumulative number of confirmed cases fewer than Canada over one million!  
 
 Although both countries have implemented distancing measures, the effect is not satisfactory: 
 
@@ -108,7 +108,7 @@ map <- plot_ly(map, split = ~name,
 widgetframe::frameWidget(map, width = 720)
 ```
 
-Most of the early cases in Australia were imported from overseas travelers and passed on to their direct contacts. It is relatively easy for people arriving by plane or ship to pass through strict contact tracing, which is even more difficult when travelers drive across long-distance borders (such as the border separating Canada and the United States). From the map (Figure \@ref(fig:canada-map)), we can see the cases are in provinces or territories in northern of Canada are much less than the southern which is the border with the United States. Especially in Ontario and Quebec, the total number was exceeding 100,000. 
+Most of the early cases in Australia were imported from overseas travelers and passed on to their direct contacts. It is relatively easy for people arriving by plane or ship to pass through strict contact tracing, which is even more difficult when travelers drive across long-distance borders (such as the border separating Canada and the United States). From the map (Figure \@ref(fig:canada-map)), we can see the cases are in provinces or territories in northern of Canada are much less than the southern, which is the border with the United States. Especially in Ontario and Quebec, the total number was exceeding 100,000. 
 
 This is because, Although Canada and the United States have reached an agreement since the beginning of the pandemic to close their borders for "non-essential" travel on March 21, 2020. There are still many Americans who have been taking advantage of the so-called "Alaska loophole" Enter Canada. It has been reported that those who discovered the loophole, tell the authorities that they were only on the way to Alaska, USA via Canada. This has led to a rapid increase in the number of confirmed cases in the southern provinces and territories of Canada, especially in the densely populated Ontario and Quebec.
 
@@ -163,7 +163,7 @@ At the same time, the number of daily new cases are also increasing in multiple 
 </font> 
 </center>
 
-China moved quickly to quell a new coronavirus outbreak in Beijing on June, raising its emergency level, suspending reopening and canceling more than 60 per cent of flights in and out of the capital after reporting at least 256 new cases since early June. If Canada takes a similar approach to control new outbreaks, it foreseeable that they can avoid more drastic measures like shutting down non-essential businesses and reimposing lockdown measures across the country for the long term.
+China moved quickly to quell a new coronavirus outbreak in Beijing on June, raising its emergency level, suspending reopening and cancelling more than 60 per cent of flights in and out of the capital after reporting at least 256 new cases since early June. If Canada takes a similar approach to control new outbreaks, it foreseeable that they can avoid more drastic measures like shutting down non-essential businesses and reimposing lockdown measures across the country for the long term.
 
 # Acknowledgement
 
