@@ -12,12 +12,11 @@ authors: []
 lastmod: '2020-09-11T13:00:29+10:00'
 featured: no
 image:
-  caption: 'BY HRD'
+  caption: ''
   focal_point: ''
   preview_only: no
 projects: []
 bibliography: references.bib
-runtime: shiny
 ---
 
 ```{r set-up, message=FALSE, echo=FALSE}
@@ -159,6 +158,7 @@ China moved quickly to quell a new coronavirus outbreak in Beijing on June, rais
 # Acknowledgement
 
 Thanks for _[COVID-19 Canada Open Data Working Group](https://github.com/ishaberry/Covid19Canada)_ provided the COVID-19 datasets (@Covid19Canada), also thanks for _Hugo_ to provide framework for building websites.  
+
 Packages used are @tidyverse, @plotly, @highcharter, @kableExtra, @lubridate, @rnaturalearth, @widgetframe and @blogdown.
 
 
