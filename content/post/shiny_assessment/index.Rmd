@@ -65,7 +65,7 @@ The plots and tables in the app will be changed based on the input selected by t
 
 Corresponding notes are included in the tabs, telling users how to select input, and what the output results of pictures and tables mean. Expanded explanations for some input selections. For example, users may not be able to accurately understand what Retail & Recreation represents, for this reason, some of the examples of this place are provided in the notes.
 
-This app also provides more innovative content: "Change in Visitors by Category". Since most of the visualization since the pandemic is based on the number of cases and deaths. This content provides a new perspective which is what changes have been made in people's lives after the pandemic.
+This app also provides more innovative content: *'Change in Visitors by Category'*. Since most of the visualization since the pandemic is based on the number of cases and deaths. This content provides a new perspective which is what changes have been made in people's lives after the pandemic.
 
 ## Points need to improve
 
@@ -75,7 +75,7 @@ There are too many input choices under each tab, causing users may be confused b
 knitr::include_graphics("covid19_tab.png")
 ```
 
-The table under the COVID-19 Cases/Deaths tab (Refer to Figure \@ref(fig:covid19-tab)) will become longer as more countries been selected, cause the arrangement under this tab looking not tidy. And the "Select Countries" option will change the two plots at the same time. It is not very reasonable to put the selection above the right plot. Also, it would be better if the title of the plot on the left can be modified when users changed their selections, that will make the tittle more relevant with the plot.
+The table under the COVID-19 Cases/Deaths tab (Refer to Figure \@ref(fig:covid19-tab)) will become longer as more countries been selected, cause the arrangement under this tab looking not tidy. And the *'Select Countries*' option will change the two plots at the same time. It is not very reasonable to put the selection above the right plot. Also, it would be better if the title of the plot on the left can be modified when users changed their selections, that will make the tittle more relevant with the plot.
 
 ```{r visitor-tab, echo=FALSE, out.width = '100%', fig.cap="Change in Visitors by Category tab in the dashboard", fig.align='center'}
 knitr::include_graphics("visitor_tab.png")

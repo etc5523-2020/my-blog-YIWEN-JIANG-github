@@ -62,7 +62,7 @@ Figure 3: About tab in the dashboard
 &lt;/div&gt;
 &lt;p&gt;The plots and tables in the app will be changed based on the input selected by the users, and the plots and tables under each tab are related. So that the users can make corresponding adjustments according to the information they are interested in.&lt;/p&gt;
 &lt;p&gt;Corresponding notes are included in the tabs, telling users how to select input, and what the output results of pictures and tables mean. Expanded explanations for some input selections. For example, users may not be able to accurately understand what Retail &amp;amp; Recreation represents, for this reason, some of the examples of this place are provided in the notes.&lt;/p&gt;
-&lt;p&gt;This app also provides more innovative content: “Change in Visitors by Category”. Since most of the visualization since the pandemic is based on the number of cases and deaths. This content provides a new perspective which is what changes have been made in people’s lives after the pandemic.&lt;/p&gt;
+&lt;p&gt;This app also provides more innovative content: &lt;em&gt;‘Change in Visitors by Category’&lt;/em&gt;. Since most of the visualization since the pandemic is based on the number of cases and deaths. This content provides a new perspective which is what changes have been made in people’s lives after the pandemic.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;points-need-to-improve&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Points need to improve&lt;/h2&gt;
@@ -73,7 +73,7 @@ Figure 3: About tab in the dashboard
 Figure 4: COVID-19 Cases/Deaths tab in the dashboard
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;The table under the COVID-19 Cases/Deaths tab (Refer to Figure &lt;a href=&#34;#fig:covid19-tab&#34;&gt;4&lt;/a&gt;) will become longer as more countries been selected, cause the arrangement under this tab looking not tidy. And the “Select Countries” option will change the two plots at the same time. It is not very reasonable to put the selection above the right plot. Also, it would be better if the title of the plot on the left can be modified when users changed their selections, that will make the tittle more relevant with the plot.&lt;/p&gt;
+&lt;p&gt;The table under the COVID-19 Cases/Deaths tab (Refer to Figure &lt;a href=&#34;#fig:covid19-tab&#34;&gt;4&lt;/a&gt;) will become longer as more countries been selected, cause the arrangement under this tab looking not tidy. And the &lt;em&gt;’Select Countries&lt;/em&gt;’ option will change the two plots at the same time. It is not very reasonable to put the selection above the right plot. Also, it would be better if the title of the plot on the left can be modified when users changed their selections, that will make the tittle more relevant with the plot.&lt;/p&gt;
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:visitor-tab&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;visitor_tab.png&#34; alt=&#34;Change in Visitors by Category tab in the dashboard&#34; width=&#34;100%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
