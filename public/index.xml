@@ -77,6 +77,57 @@
     </item>
     
     <item>
+      <title>Shiny app introduction and review</title>
+      <link>/post/shiny-app-introduction-and-review/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post/shiny-app-introduction-and-review/</guid>
+      <description>
+
+
+&lt;p&gt;The coronavirus pandemic, also known as the COVID-19 pandemic. The disease was first identified in December 2019 in Wuhan, China. The outbreak was declared a Public Health Emergency of International Concern in January 2020, and a pandemic in March 2020. As of 11 October 2020, more than 37.2 million cases have been confirmed as well as more than 1.07 million deaths attributed to COVID-19. This blog post is an introduction of the Coronavirus Pandemic Shiny app, and mainly focus on reviewing the app and offer the points need to improve.&lt;/p&gt;
+&lt;div id=&#34;introduction-of-the-shiny-app&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction of the Shiny App&lt;/h1&gt;
+&lt;p&gt;Travel restrictions, lockdowns, workplace hazard controls, and facility closures have been implemented. These have caused the social and economic disruption, including the largest global recession since the Great Depression. Extreme poverty and global famines are affecting hundreds of millions, inflamed by supply shortages. Many events, the environment and education systems have also been affected. Misinformation about the virus has circulated globally.&lt;/p&gt;
+&lt;p&gt;Because of the news, it can be difficult to explain. How fast is the virus spreading? Are the efforts to control the disease effectively? How does the spread of the virus differ between the countries? Affected by the pandemic, how have people’s daily activities changed? By looking beyond the news, we hope it is possible to have a deeper understanding of this pandemic through this app.&lt;/p&gt;
+&lt;p&gt;The aim of this app is to complement the raw data by providing interactive visualisation which is not available by the news, including the timeline function and the ability to compare between countries.&lt;/p&gt;
+&lt;p&gt;The app contains four tabs: Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data&lt;/strong&gt;: To display the raw data used in this app, users can select the variables and observations they want to view.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;About&lt;/strong&gt;: Relevant information about this app, such background of the COVID-19, code used to create this app, creator and references.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Change in Visitors by Category&lt;/strong&gt;: Show the change in the frequency of people going to the places compared to before the pandemic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;COVID-19 Cases/Deaths&lt;/strong&gt;: Use plots and tables to show the difference in the number of cases and deaths between countries, as well as the trend of those number changes over the past few months.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;self-review&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Self Review&lt;/h1&gt;
+&lt;div id=&#34;points-did-well&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Points did well&lt;/h2&gt;
+&lt;p&gt;On the whole, this app uses the shiny dashboard to place different content under the corresponding tabs, so that users can clearly understand the structure of the app, and more directly guide users to find the content they want to view.&lt;/p&gt;
+&lt;p&gt;The “Data” tab in the dashboard provides an overview of raw data used in this app. And the data source and source of the code are provided under the “About” if the users want to reproduce the shiny app, it can provide the users with a preliminary understanding of the data and easier to obtain the code.&lt;/p&gt;
+&lt;p&gt;The plots and tables in the app will be changed based on the input selected by the users, and the plots and tables under each tab are related. So that the users can make corresponding adjustments according to the information they are interested in.&lt;/p&gt;
+&lt;p&gt;Corresponding notes are included in the tabs, telling users how to select input, and what the output results of pictures and tables mean. Expanded explanations for some input selections. For example, users may not be able to accurately understand what Retail &amp;amp; Recreation represents, for this reason, some of the examples of this place are provided in the notes.&lt;/p&gt;
+&lt;p&gt;This app also provides more innovative content: “Change in Visitors by Category”. Since most of the visualization since the pandemic is based on the number of cases and deaths. This content provides a new perspective which is what changes have been made in people’s lives after the pandemic.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;points-need-to-improve&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Points need to improve&lt;/h2&gt;
+&lt;p&gt;There are too many input choices under each tab, causing users may be confused by how to select the input and get the result as they expected. The inputs selection for a certain plot or table can be combined in a single box.&lt;/p&gt;
+&lt;p&gt;The table under the COVID-19 Cases/Deaths tab will become longer as more countries been selected, cause the arrangement under this tab looking not tidy. And the “Select Countries” option will change the two plots at the same time. It is not very reasonable to put the selection above the right plot. Also, it would be better if the title of the plot on the left can be modified when users changed their selections, that will make the tittle more relevant with the plot.&lt;/p&gt;
+&lt;p&gt;Because the map under the Change in Visitors by Category tab is not large enough, and it is not possible to observe some countries or territories with a small area, such as countries in the European. It is a better choice to put the map under a new tab, or use &lt;code&gt;ggplotly&lt;/code&gt; allows users to zoom in on specific locations according to their needs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;things-plausible-to-add-in-the-app&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Things plausible to add in the app&lt;/h2&gt;
+&lt;p&gt;Although we are tired to watching the changes in the number of cases and deaths in the form of a map, it is still an effective way to visualise, and users can more intuitively to compare the difference on the numbers between the adjacent countries. In addition, the data are a time series, by using animation to display the changing on the numbers over time will be more efficient to observe the changing or trending at a certain period.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;limitation-of-the-data-and-technology&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Limitation of the data and technology&lt;/h2&gt;
+&lt;p&gt;Since the visitors’ raw data are provided by Google and Apple, there are many limitations and resections during the data collection. For example, Google map is not available in China and Chinese people mainly uses Baidu maps. This has caused the values in some of the countries are missing. The users will only be available to compare the countries which have available data.&lt;/p&gt;
+&lt;p&gt;When creating this app, the original idea was to give the COVID-19 data of the corresponding country based on the click on the map. However, the horizontal and vertical coordinates of the same country are different when each time click on the map. For example, although Melbourne and Sydney are both in Australia, their geographic locations are different. A country can have countless coordinates, and the shape of each country is different. It is limited by the technology to accurately filter out the relevant information of that country based on the click on the map.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>How is the Pandemic in Canada?</title>
       <link>/post/covid-19-on-canada/</link>
       <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>

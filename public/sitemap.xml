@@ -34,21 +34,26 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-09-11T13:00:29+10:00</lastmod>
+    <lastmod>2020-10-11T15:13:36+11:00</lastmod>
   </url>
   
   <url>
     <loc>/category/etc5523-blog/</loc>
-    <lastmod>2020-09-11T13:00:29+10:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/covid-19-on-canada/</loc>
-    <lastmod>2020-09-11T13:00:29+10:00</lastmod>
+    <lastmod>2020-10-11T15:13:36+11:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
+    <lastmod>2020-10-11T15:13:36+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/shiny-app-introduction-and-review/</loc>
+    <lastmod>2020-10-11T15:13:36+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/covid-19-on-canada/</loc>
     <lastmod>2020-09-11T13:00:29+10:00</lastmod>
   </url>
   
