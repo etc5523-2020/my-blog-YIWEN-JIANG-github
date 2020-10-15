@@ -1,5 +1,5 @@
 ---
-title: Shiny app introduction and review
+title: Shiny app Introduction and Review
 author: Yiwen Jiang
 date: '2020-10-11'
 slug: shiny-app-introduction-and-review
@@ -16,6 +16,7 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+bibliography: references.bib
 ---
 
 The coronavirus pandemic, also known as the COVID-19 pandemic. The disease was first identified in December 2019 in Wuhan, China. The outbreak was declared a Public Health Emergency of International Concern in January 2020, and a pandemic in March 2020. As of 11 October 2020, more than 37.2 million cases have been confirmed as well as more than 1.07 million deaths attributed to COVID-19. This blog post is an introduction of the Coronavirus Pandemic Shiny app, and mainly focus on reviewing the app and offer the points need to improve.
@@ -28,7 +29,15 @@ Because of the news, it can be difficult to explain. How fast is the virus sprea
 
 The aim of this app is to complement the raw data by providing interactive visualisation which is not available by the news, including the timeline function and the ability to compare between countries.
 
-The app contains four tabs: Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.
+The app contains four tabs (as showing in Figure \@ref(fig:tabs-in-shiny)): Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.
+
+<center>
+
+```{r tabs-in-shiny, echo=FALSE, out.width = '50%', fig.cap="Tabs in the shiny dashboard", fig.align='center'}
+knitr::include_graphics("tabs.png")
+```
+</center>
+
 
 - **Data**: To display the raw data used in this app, users can select the variables and observations they want to view.
 - **About**: Relevant information about this app, such background of the COVID-19, code used to create this app, creator and references.
@@ -41,7 +50,16 @@ The app contains four tabs: Data, About, Change in Visitors by Category and COVI
 
 On the whole, this app uses the shiny dashboard to place different content under the corresponding tabs, so that users can clearly understand the structure of the app, and more directly guide users to find the content they want to view.
 
-The “Data” tab in the dashboard provides an overview of raw data used in this app. And the data source and source of the code are provided under the “About” if the users want to reproduce the shiny app, it can provide the users with a preliminary understanding of the data and easier to obtain the code.
+```{r data-tab, echo=FALSE, out.width = '100%', fig.cap="Data tab in the dashboard", fig.align='center'}
+knitr::include_graphics("data_tab.png")
+```
+
+The **Data** tab (Figure \@ref(fig:data-tab)) in the dashboard provides an overview of raw data used in this app. And the data source and source of the code are provided under the **About** (Figure \@ref(fig:about-tab))if the users want to reproduce the shiny app, it can provide the users with a preliminary understanding of the data and easier to obtain the code.
+
+
+```{r about-tab, echo=FALSE, out.width = '100%', fig.cap="About tab in the dashboard", fig.align='center'}
+knitr::include_graphics("about_tab.png")
+```
 
 The plots and tables in the app will be changed based on the input selected by the users, and the plots and tables under each tab are related. So that the users can make corresponding adjustments according to the information they are interested in.
 
@@ -53,9 +71,17 @@ This app also provides more innovative content: "Change in Visitors by Category"
 
 There are too many input choices under each tab, causing users may be confused by how to select the input and get the result as they expected. The inputs selection for a certain plot or table can be combined in a single box.
 
-The table under the COVID-19 Cases/Deaths tab will become longer as more countries been selected, cause the arrangement under this tab looking not tidy. And the "Select Countries" option will change the two plots at the same time. It is not very reasonable to put the selection above the right plot. Also, it would be better if the title of the plot on the left can be modified when users changed their selections, that will make the tittle more relevant with the plot.
+```{r covid19-tab, echo=FALSE, out.width = '100%', fig.cap="COVID-19 Cases/Deaths tab in the dashboard", fig.align='center'}
+knitr::include_graphics("covid19_tab.png")
+```
 
-Because the map under the Change in Visitors by Category tab is not large enough, and it is not possible to observe some countries or territories with a small area, such as countries in the European. It is a better choice to put the map under a new tab, or use `ggplotly` allows users to zoom in on specific locations according to their needs.
+The table under the COVID-19 Cases/Deaths tab (Refer to Figure \@ref(fig:covid19-tab)) will become longer as more countries been selected, cause the arrangement under this tab looking not tidy. And the "Select Countries" option will change the two plots at the same time. It is not very reasonable to put the selection above the right plot. Also, it would be better if the title of the plot on the left can be modified when users changed their selections, that will make the tittle more relevant with the plot.
+
+```{r visitor-tab, echo=FALSE, out.width = '100%', fig.cap="Change in Visitors by Category tab in the dashboard", fig.align='center'}
+knitr::include_graphics("visitor_tab.png")
+```
+
+Because the map under the Change in Visitors by Category tab (Refer to Figure \@ref(fig:visitor-tab)) is not large enough, and it is not possible to observe some countries or territories with a small area, such as countries in the European. It is a better choice to put the map under a new tab, or use `ggplotly` allows users to zoom in on specific locations according to their needs.
 
 ## Things plausible to add in the app
 
@@ -67,6 +93,11 @@ Since the visitors’ raw data are provided by Google and Apple, there are many 
 
 When creating this app, the original idea was to give the COVID-19 data of the corresponding country based on the click on the map. However, the horizontal and vertical coordinates of the same country are different when each time click on the map. For example, although Melbourne and Sydney are both in Australia, their geographic locations are different. A country can have countless coordinates, and the shape of each country is different. It is limited by the technology to accurately filter out the relevant information of that country based on the click on the map.
 
+# Acknowledgement
+
+Thanks for _[COVID-19 Canada Open Data Working Group](https://github.com/ishaberry/Covid19Canada)_ provided the COVID-19 datasets (@Covid19Canada), also thanks for _Hugo_ to provide framework for building websites. Package used to create this blog is @knitr
+
+# Reference
 
 
 
