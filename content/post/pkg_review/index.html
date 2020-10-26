@@ -1,0 +1,160 @@
+---
+title: R Package Review
+author: Yiwen Jiang
+date: '2020-10-24'
+slug: r-package-review
+categories:
+  - ETC5523 Blog
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-10-24T22:09:55+11:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+bibliography: references.bib
+---
+
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+
+
+<p>R packages are collections of functions and datasets developed by the developers. They increase the power of R by improving existing base R functionalities, or by adding new ones. This blog post is a peer review of the colleague’s R package and mainly focus on providing useful feedback and what I have learned from their package.</p>
+<div id="phyllispkg-package-overview" class="section level1">
+<h1><code>phyllispkg</code> Package Overview</h1>
+<p>This blog reviews a package which is called <code>phyllispkg</code>, the creator of this package is Peimin Lin. The <code>phyllispkg</code> package can be found via <a href="https://github.com/etc5523-2020/r-package-assessment-Phyllis-Lin">Github</a> or install it by using the following code:</p>
+<pre><code>devtools::install_github(&quot;etc5523-2020/r-package-assessment-Phyllis-Lin&quot;)</code></pre>
+<p>This package aims to provide COVID-19 shiny app. It also provides relevant functions which are used to in this shiny app’s UI and Sever, also the relevant datasets of COVID-19.</p>
+</div>
+<div id="what-did-i-think-this-package-would-do-did-it-do-it" class="section level1">
+<h1>What did I think this package would do? Did it do it?</h1>
+<p>What I expected of this <code>phyllispkg</code> package would do includes the following aspects. It can run the COVID-19 shiny app appropriately and all the plots and tables in the app are working well. The functions in the package can be used to produce this shiny app and also used in another situation. Full documentation to explain how to use the functions and datasets in <code>phyllispkg</code> package.</p>
+<center>
+<div class="figure" style="text-align: center"><span id="fig:launch-app-error"></span>
+<img src="launch_error1.png" alt="When using the launch_app() function from the `phyllispkg` package, get errors to required install other packages" width="80%" />
+<p class="caption">
+Figure 1: When using the launch_app() function from the <code>phyllispkg</code> package, get errors to required install other packages
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:shiny-error"></span>
+<img src="shiny_error.png" alt="Error message when launching the shiny app" width="60%" />
+<p class="caption">
+Figure 2: Error message when launching the shiny app
+</p>
+</div>
+</center>
+<p>First, when trying to use <code>launch_app()</code> function to launch the shiny app, there are some error messages (Part of the messages was showing in Figure <a href="#fig:launch-app-error">1</a>) came out, which are required to install other packages before running this shiny app. After installing all the relevant packages based on the error message and try to launch the app again. There was a new error came out (Refer to Figure <a href="#fig:shiny-error">2</a>), we can assess that the shiny app inside <code>phyllispkg</code> package cannot run properly.</p>
+<p>After going through the shiny app <code>R.script</code>, all the functions from this package are appropriately used in COVID-19 shiny app. Those functions are also providing multiple arguments so that those functions can be used in other scenarios. For example, the <code>menu()</code> function provides <code>id</code>, <code>tab</code> and <code>name</code> arguments, users can choose the different icons and add the sidebar menu to their own shiny app based on their needs.</p>
+<p>By using the help function in R to check documentations of all the datasets and functions inside <code>phyllispkg</code> package. Figure 3 shows one of the documentations of the datasets. All the datasets and functions are documented well, users are able to clearly understands what the functions do and what arguments inside the function represents. Users can use those functions and datasets in their own report.</p>
+</div>
+<div id="points-need-to-improve" class="section level1">
+<h1>Points need to improve</h1>
+<div id="are-the-improvements-that-could-be-made-to-the-code" class="section level2">
+<h2>Are the improvements that could be made to the code?</h2>
+<p>The overall codes inside the package are working well, but there are still the following points that can be improved.</p>
+<pre><code>radio_input  &lt;- function(inputId, label, choices) {
+  radioButtons(inputId,
+               label = label,
+               choices = c(&quot;confirmed&quot;, &quot;death&quot;, &quot;recovered&quot;), 
+               selected = &quot;confirmed&quot;
+  )
+}</code></pre>
+<p>As shown in the code above, for the function of <code>radio_input()</code>, the <code>choice</code> argument cannot be changed by users because it has been pre-defined to “confirmed”, “death” and “recovered”. If we assume that the arguments of choices can be changed, there will raise another issue. Because the <code>selected</code> argument inside the function cannot be modified, which means that if the users use another data and there is no so-called “confirmed” variable in that data, the function cannot work properly.</p>
+<pre><code>menu &lt;- function(id, tab, name){
+  menuItem(id, tabName = tab, icon = icon(name))
+}</code></pre>
+<p>Also the <code>menu()</code> function (showing in the above chunk), it gives three arguments which are same as the arguments of <code>menuItem()</code> function, that is pointless for creating this function because users still have to set the id of the menu, menu name and its icon.</p>
+</div>
+<div id="are-there-improvements-that-could-be-made-to-the-shiny-app-inside-the-package" class="section level2">
+<h2>Are there improvements that could be made to the shiny app inside the package?</h2>
+<div class="figure" style="text-align: center"><span id="fig:run-error"></span>
+<img src="run_error.png" alt="Error message when run the shiny app" width="100%" />
+<p class="caption">
+Figure 3: Error message when run the shiny app
+</p>
+</div>
+<p>First of all, as mentioned above the <code>launch_app()</code> function from <code>phyllispkg</code> package does not work, and if we try to run the shiny app directly, it still comes out with an error (Refer to Figure <a href="#fig:run-error">3</a>).</p>
+<p>After going through all the <code>R.script</code> which are related to run this shiny app, there are few points that could be improved:</p>
+<ol style="list-style-type: decimal">
+<li>Because there are separate files required to run the shiny app, it should be better to add <code>shinyApp(ui = ui, server = server)</code> under the <code>global.R</code>, that users can know how to run the shiny app.</li>
+<li>In both of the <code>server.R</code> and <code>ui.R</code> of this shiny app, it used the datasets and functions from the <code>phyllispkg</code> package to create the plots, tables and interactive input. However, in the <code>global.R</code>, there is no <code>library(phyllispkg)</code>. That cause when running the shiny app it cannot find the datasets and functions been used.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:map"></span>
+<img src="map.png" alt="Map tab in the shiny app" width="100%" />
+<p class="caption">
+Figure 4: Map tab in the shiny app
+</p>
+</div>
+<p>According to the shiny app inside the package, we can observe that the data used to make the map does not seem to be consistent. As shown in Figure <a href="#fig:map">4</a>, as the green arrow points out that the number in the United States are counted as a whole, but the red arrow points out that in the Australia numbers are counted for each state. It may mislead the users when they use this map or data to make a comparison.</p>
+</div>
+<div id="is-the-documentation-sufficient-to-get-started" class="section level2">
+<h2>Is the documentation sufficient to get started?</h2>
+<p>All the documentations for the datasets inside the package are sufficient, such as the description of what the data is, what each of the variables in each dataset represents for and the source of the datasets.</p>
+<p>Although most of the functions are provided with what of each of the argument does, it still gets confused to understand how to use it. For example, <code>menu()</code> function can only be used in a shiny app, if the users use this in a markdown file they may not understand the what this function does and what the output is. It is better to mention under what situation we can use this function and provide at least one example in the documentation for each of the function.</p>
+</div>
+</div>
+<div id="what-i-have-learned-from-reviewing-this-package" class="section level1">
+<h1>What I have learned from reviewing this package?</h1>
+<p>It is difficult to make an R package individually because there are some many aspects has to concerned such as clean the datasets, create functions and test all the functions working well. By reviewing the <code>phyllispkg</code> package, it can be seen that the contents of this package still meet the basic requirements of a package, function been tested, and all the datasets and functions are documented well. Those documentations explain and introduce how this package works and how to use it.</p>
+<p>What surprised me and the aspect I liked is that, like other commonly used R packages, the creator also made the logo for this package. This made me feel very professional when I saw the GitHub page of this package for the first time.</p>
+</div>
+<div id="appendix" class="section level1">
+<h1>Appendix</h1>
+<div id="package-review" class="section level2">
+<h2>Package Review</h2>
+<ul>
+<li><p><strong>Briefly describe any working relationship you have (had) with the package authors.</strong></p></li>
+<li><p><input type="checkbox" disabled="" checked="" />
+As the reviewer I confirm that there are no <a href="https://devguide.ropensci.org/policies.html#coi">conflicts of interest</a> for me to review this work.</p></li>
+</ul>
+<div id="documentation" class="section level4">
+<h4>Documentation</h4>
+<p>The package includes all the following forms of documentation:</p>
+<ul>
+<li><p><input type="checkbox" disabled="" checked="" />
+<strong>Installation instructions:</strong> for the package is found in README</p></li>
+<li><p><input type="checkbox" disabled="" checked="" />
+<strong>Vignette(s)</strong> demonstrating major functionality that runs successfully locally</p></li>
+<li><p><input type="checkbox" disabled="" checked="" />
+<strong>Function Documentation:</strong> for all exported functions in R help</p></li>
+<li><p><input type="checkbox" disabled="" />
+<strong>Examples</strong> for all exported functions in R Help that run successfully locally</p></li>
+</ul>
+</div>
+<div id="functionality" class="section level4">
+<h4>Functionality</h4>
+<ul>
+<li><p><input type="checkbox" disabled="" checked="" />
+<strong>Installation:</strong> Installation succeeds as documented.</p></li>
+<li><p><input type="checkbox" disabled="" />
+<strong>Functionality:</strong> Any functional claims of the software been confirmed.</p></li>
+<li><p><input type="checkbox" disabled="" />
+<strong>Automated tests:</strong> Unit tests cover essential functions of the package and a reasonable range of inputs and conditions. All tests pass on the local machine.</p></li>
+</ul>
+</div>
+<div id="review-comments" class="section level3">
+<h3>Review Comments</h3>
+<ul>
+<li>All the functions inside this package do not provide any examples</li>
+<li>The <code>launch_app()</code> function inside this package can not run properly</li>
+<li>There is only one test which is a test for the <code>menu()</code> function, other functions have not been tested.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="acknowledgement" class="section level1">
+<h1>Acknowledgement</h1>
+<p>Thanks for <em>Hugo</em> to provide framework for building websites. Package used to create this blog is <span class="citation">Xie (2020)</span></p>
+</div>
+<div id="reference" class="section level1 unnumbered">
+<h1>Reference</h1>
+<div id="refs" class="references">
+<div id="ref-knitr">
+<p>Xie, Yihui. 2020. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.</p>
+</div>
+</div>
+</div>

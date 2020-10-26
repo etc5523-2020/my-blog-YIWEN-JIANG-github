@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="The coronavirus pandemic, also known as the COVID-19 pandemic. The disease was first identified in December 2019 in Wuhan, China. The outbreak was declared a Public Health Emergency of International Concern in January 2020, and a pandemic in March 2020.">
+  <meta name="description" content="R packages are collections of functions and datasets developed by the developers. They increase the power of R by improving existing base R functionalities, or by adding new ones.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/shiny-app-introduction-and-review/">
+  <link rel="alternate" hreflang="en-us" href="/post/r-package-review/">
 
   
 
@@ -238,7 +238,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="/post/shiny-app-introduction-and-review/">
+  <link rel="canonical" href="/post/r-package-review/">
 
   
   
@@ -254,15 +254,15 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="ETC 5523 Blog">
-  <meta property="og:url" content="/post/shiny-app-introduction-and-review/">
-  <meta property="og:title" content="Shiny app Introduction and Review | ETC 5523 Blog">
-  <meta property="og:description" content="The coronavirus pandemic, also known as the COVID-19 pandemic. The disease was first identified in December 2019 in Wuhan, China. The outbreak was declared a Public Health Emergency of International Concern in January 2020, and a pandemic in March 2020."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:url" content="/post/r-package-review/">
+  <meta property="og:title" content="R Package Review | ETC 5523 Blog">
+  <meta property="og:description" content="R packages are collections of functions and datasets developed by the developers. They increase the power of R by improving existing base R functionalities, or by adding new ones."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-10-11T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2020-10-24T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2020-10-11T15:13:36&#43;11:00">
+    <meta property="article:modified_time" content="2020-10-24T22:09:55&#43;11:00">
   
 
   
@@ -286,12 +286,12 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/post/shiny-app-introduction-and-review/"
+    "@id": "/post/r-package-review/"
   },
-  "headline": "Shiny app Introduction and Review",
+  "headline": "R Package Review",
   
-  "datePublished": "2020-10-11T00:00:00Z",
-  "dateModified": "2020-10-11T15:13:36+11:00",
+  "datePublished": "2020-10-24T00:00:00Z",
+  "dateModified": "2020-10-24T22:09:55+11:00",
   
   "author": {
     "@type": "Person",
@@ -306,7 +306,7 @@
       "url": "/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "The coronavirus pandemic, also known as the COVID-19 pandemic. The disease was first identified in December 2019 in Wuhan, China. The outbreak was declared a Public Health Emergency of International Concern in January 2020, and a pandemic in March 2020."
+  "description": "R packages are collections of functions and datasets developed by the developers. They increase the power of R by improving existing base R functionalities, or by adding new ones."
 }
 </script>
 
@@ -324,7 +324,7 @@
 
 
 
-  <title>Shiny app Introduction and Review | ETC 5523 Blog</title>
+  <title>R Package Review | ETC 5523 Blog</title>
 
 </head>
 
@@ -694,7 +694,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Shiny app Introduction and Review</h1>
+  <h1>R Package Review</h1>
 
   
 
@@ -715,7 +715,7 @@
           Last updated on
       
     
-    Oct 11, 2020
+    Oct 24, 2020
   </span>
   
 
@@ -724,7 +724,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    7 min read
   </span>
   
 
@@ -765,90 +765,140 @@
 
     <div class="article-style">
       
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 
 
-<p>The coronavirus pandemic, also known as the COVID-19 pandemic. The disease was first identified in December 2019 in Wuhan, China. The outbreak was declared a Public Health Emergency of International Concern in January 2020, and a pandemic in March 2020. As of 11 October 2020, more than 37.2 million cases have been confirmed as well as more than 1.07 million deaths attributed to COVID-19. This blog post is an introduction of the Coronavirus Pandemic Shiny app, and mainly focus on reviewing the app and offer the points need to improve.</p>
-<div id="introduction-of-the-shiny-app" class="section level1">
-<h1>Introduction of the Shiny App</h1>
-<p>Travel restrictions, lockdowns, workplace hazard controls, and facility closures have been implemented. These have caused the social and economic disruption, including the largest global recession since the Great Depression. Extreme poverty and global famines are affecting hundreds of millions, inflamed by supply shortages. Many events, the environment and education systems have also been affected. Misinformation about the virus has circulated globally.</p>
-<p>Because of the news, it can be difficult to explain. How fast is the virus spreading? Are the efforts to control the disease effectively? How does the spread of the virus differ between the countries? Affected by the pandemic, how have people’s daily activities changed? By looking beyond the news, we hope it is possible to have a deeper understanding of this pandemic through this app.</p>
-<p>The aim of this app is to complement the raw data by providing interactive visualisation which is not available by the news, including the timeline function and the ability to compare between countries.</p>
-<p>The app contains four tabs (as showing in Figure <a href="#fig:tabs-in-shiny">1</a>): Data, About, Change in Visitors by Category and COVID-19 Cases/Deaths. Following are the discussion of the contents of these four tabs.</p>
+<p>R packages are collections of functions and datasets developed by the developers. They increase the power of R by improving existing base R functionalities, or by adding new ones. This blog post is a peer review of the colleague’s R package and mainly focus on providing useful feedback and what I have learned from their package.</p>
+<div id="phyllispkg-package-overview" class="section level1">
+<h1><code>phyllispkg</code> Package Overview</h1>
+<p>This blog reviews a package which is called <code>phyllispkg</code>, the creator of this package is Peimin Lin. The <code>phyllispkg</code> package can be found via <a href="https://github.com/etc5523-2020/r-package-assessment-Phyllis-Lin">Github</a> or install it by using the following code:</p>
+<pre><code>devtools::install_github(&quot;etc5523-2020/r-package-assessment-Phyllis-Lin&quot;)</code></pre>
+<p>This package aims to provide COVID-19 shiny app. It also provides relevant functions which are used to in this shiny app’s UI and Sever, also the relevant datasets of COVID-19.</p>
+</div>
+<div id="what-did-i-think-this-package-would-do-did-it-do-it" class="section level1">
+<h1>What did I think this package would do? Did it do it?</h1>
+<p>What I expected of this <code>phyllispkg</code> package would do includes the following aspects. It can run the COVID-19 shiny app appropriately and all the plots and tables in the app are working well. The functions in the package can be used to produce this shiny app and also used in another situation. Full documentation to explain how to use the functions and datasets in <code>phyllispkg</code> package.</p>
 <center>
-<div class="figure" style="text-align: center"><span id="fig:tabs-in-shiny"></span>
-<img src="tabs.png" alt="Tabs in the shiny dashboard" width="50%" />
+<div class="figure" style="text-align: center"><span id="fig:launch-app-error"></span>
+<img src="launch_error1.png" alt="When using the launch_app() function from the `phyllispkg` package, get errors to required install other packages" width="80%" />
 <p class="caption">
-Figure 1: Tabs in the shiny dashboard
+Figure 1: When using the launch_app() function from the <code>phyllispkg</code> package, get errors to required install other packages
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:shiny-error"></span>
+<img src="shiny_error.png" alt="Error message when launching the shiny app" width="60%" />
+<p class="caption">
+Figure 2: Error message when launching the shiny app
 </p>
 </div>
 </center>
+<p>First, when trying to use <code>launch_app()</code> function to launch the shiny app, there are some error messages (Part of the messages was showing in Figure <a href="#fig:launch-app-error">1</a>) came out, which are required to install other packages before running this shiny app. After installing all the relevant packages based on the error message and try to launch the app again. There was a new error came out (Refer to Figure <a href="#fig:shiny-error">2</a>), we can assess that the shiny app inside <code>phyllispkg</code> package cannot run properly.</p>
+<p>After going through the shiny app <code>R.script</code>, all the functions from this package are appropriately used in COVID-19 shiny app. Those functions are also providing multiple arguments so that those functions can be used in other scenarios. For example, the <code>menu()</code> function provides <code>id</code>, <code>tab</code> and <code>name</code> arguments, users can choose the different icons and add the sidebar menu to their own shiny app based on their needs.</p>
+<p>By using the help function in R to check documentations of all the datasets and functions inside <code>phyllispkg</code> package. Figure 3 shows one of the documentations of the datasets. All the datasets and functions are documented well, users are able to clearly understands what the functions do and what arguments inside the function represents. Users can use those functions and datasets in their own report.</p>
+</div>
+<div id="points-need-to-improve" class="section level1">
+<h1>Points need to improve</h1>
+<div id="are-the-improvements-that-could-be-made-to-the-code" class="section level2">
+<h2>Are the improvements that could be made to the code?</h2>
+<p>The overall codes inside the package are working well, but there are still the following points that can be improved.</p>
+<pre><code>radio_input  &lt;- function(inputId, label, choices) {
+  radioButtons(inputId,
+               label = label,
+               choices = c(&quot;confirmed&quot;, &quot;death&quot;, &quot;recovered&quot;), 
+               selected = &quot;confirmed&quot;
+  )
+}</code></pre>
+<p>As shown in the code above, for the function of <code>radio_input()</code>, the <code>choice</code> argument cannot be changed by users because it has been pre-defined to “confirmed”, “death” and “recovered”. If we assume that the arguments of choices can be changed, there will raise another issue. Because the <code>selected</code> argument inside the function cannot be modified, which means that if the users use another data and there is no so-called “confirmed” variable in that data, the function cannot work properly.</p>
+<pre><code>menu &lt;- function(id, tab, name){
+  menuItem(id, tabName = tab, icon = icon(name))
+}</code></pre>
+<p>Also the <code>menu()</code> function (showing in the above chunk), it gives three arguments which are same as the arguments of <code>menuItem()</code> function, that is pointless for creating this function because users still have to set the id of the menu, menu name and its icon.</p>
+</div>
+<div id="are-there-improvements-that-could-be-made-to-the-shiny-app-inside-the-package" class="section level2">
+<h2>Are there improvements that could be made to the shiny app inside the package?</h2>
+<div class="figure" style="text-align: center"><span id="fig:run-error"></span>
+<img src="run_error.png" alt="Error message when run the shiny app" width="100%" />
+<p class="caption">
+Figure 3: Error message when run the shiny app
+</p>
+</div>
+<p>First of all, as mentioned above the <code>launch_app()</code> function from <code>phyllispkg</code> package does not work, and if we try to run the shiny app directly, it still comes out with an error (Refer to Figure <a href="#fig:run-error">3</a>).</p>
+<p>After going through all the <code>R.script</code> which are related to run this shiny app, there are few points that could be improved:</p>
+<ol style="list-style-type: decimal">
+<li>Because there are separate files required to run the shiny app, it should be better to add <code>shinyApp(ui = ui, server = server)</code> under the <code>global.R</code>, that users can know how to run the shiny app.</li>
+<li>In both of the <code>server.R</code> and <code>ui.R</code> of this shiny app, it used the datasets and functions from the <code>phyllispkg</code> package to create the plots, tables and interactive input. However, in the <code>global.R</code>, there is no <code>library(phyllispkg)</code>. That cause when running the shiny app it cannot find the datasets and functions been used.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:map"></span>
+<img src="map.png" alt="Map tab in the shiny app" width="100%" />
+<p class="caption">
+Figure 4: Map tab in the shiny app
+</p>
+</div>
+<p>According to the shiny app inside the package, we can observe that the data used to make the map does not seem to be consistent. As shown in Figure <a href="#fig:map">4</a>, as the green arrow points out that the number in the United States are counted as a whole, but the red arrow points out that in the Australia numbers are counted for each state. It may mislead the users when they use this map or data to make a comparison.</p>
+</div>
+<div id="is-the-documentation-sufficient-to-get-started" class="section level2">
+<h2>Is the documentation sufficient to get started?</h2>
+<p>All the documentations for the datasets inside the package are sufficient, such as the description of what the data is, what each of the variables in each dataset represents for and the source of the datasets.</p>
+<p>Although most of the functions are provided with what of each of the argument does, it still gets confused to understand how to use it. For example, <code>menu()</code> function can only be used in a shiny app, if the users use this in a markdown file they may not understand the what this function does and what the output is. It is better to mention under what situation we can use this function and provide at least one example in the documentation for each of the function.</p>
+</div>
+</div>
+<div id="what-i-have-learned-from-reviewing-this-package" class="section level1">
+<h1>What I have learned from reviewing this package?</h1>
+<p>It is difficult to make an R package individually because there are some many aspects has to concerned such as clean the datasets, create functions and test all the functions working well. By reviewing the <code>phyllispkg</code> package, it can be seen that the contents of this package still meet the basic requirements of a package, function been tested, and all the datasets and functions are documented well. Those documentations explain and introduce how this package works and how to use it.</p>
+<p>What surprised me and the aspect I liked is that, like other commonly used R packages, the creator also made the logo for this package. This made me feel very professional when I saw the GitHub page of this package for the first time.</p>
+</div>
+<div id="appendix" class="section level1">
+<h1>Appendix</h1>
+<div id="package-review" class="section level2">
+<h2>Package Review</h2>
 <ul>
-<li><strong>Data</strong>: To display the raw data used in this app, users can select the variables and observations they want to view.</li>
-<li><strong>About</strong>: Relevant information about this app, such background of the COVID-19, code used to create this app, creator and references.</li>
-<li><strong>Change in Visitors by Category</strong>: Show the change in the frequency of people going to the places compared to before the pandemic.</li>
-<li><strong>COVID-19 Cases/Deaths</strong>: Use plots and tables to show the difference in the number of cases and deaths between countries, as well as the trend of those number changes over the past few months.</li>
+<li><p><strong>Briefly describe any working relationship you have (had) with the package authors.</strong></p></li>
+<li><p><input type="checkbox" disabled="" checked="" />
+As the reviewer I confirm that there are no <a href="https://devguide.ropensci.org/policies.html#coi">conflicts of interest</a> for me to review this work.</p></li>
+</ul>
+<div id="documentation" class="section level4">
+<h4>Documentation</h4>
+<p>The package includes all the following forms of documentation:</p>
+<ul>
+<li><p><input type="checkbox" disabled="" checked="" />
+<strong>Installation instructions:</strong> for the package is found in README</p></li>
+<li><p><input type="checkbox" disabled="" checked="" />
+<strong>Vignette(s)</strong> demonstrating major functionality that runs successfully locally</p></li>
+<li><p><input type="checkbox" disabled="" checked="" />
+<strong>Function Documentation:</strong> for all exported functions in R help</p></li>
+<li><p><input type="checkbox" disabled="" />
+<strong>Examples</strong> for all exported functions in R Help that run successfully locally</p></li>
 </ul>
 </div>
-<div id="self-review" class="section level1">
-<h1>Self Review</h1>
-<div id="points-did-well" class="section level2">
-<h2>Points did well</h2>
-<p>On the whole, this app uses the shiny dashboard to place different content under the corresponding tabs, so that users can clearly understand the structure of the app, and more directly guide users to find the content they want to view.</p>
-<div class="figure" style="text-align: center"><span id="fig:data-tab"></span>
-<img src="data_tab.png" alt="Data tab in the dashboard" width="100%" />
-<p class="caption">
-Figure 2: Data tab in the dashboard
-</p>
+<div id="functionality" class="section level4">
+<h4>Functionality</h4>
+<ul>
+<li><p><input type="checkbox" disabled="" checked="" />
+<strong>Installation:</strong> Installation succeeds as documented.</p></li>
+<li><p><input type="checkbox" disabled="" />
+<strong>Functionality:</strong> Any functional claims of the software been confirmed.</p></li>
+<li><p><input type="checkbox" disabled="" />
+<strong>Automated tests:</strong> Unit tests cover essential functions of the package and a reasonable range of inputs and conditions. All tests pass on the local machine.</p></li>
+</ul>
 </div>
-<p>The <strong>Data</strong> tab (Figure <a href="#fig:data-tab">2</a>) in the dashboard provides an overview of raw data used in this app. And the data source and source of the code are provided under the <strong>About</strong> (Figure <a href="#fig:about-tab">3</a>)if the users want to reproduce the shiny app, it can provide the users with a preliminary understanding of the data and easier to obtain the code.</p>
-<div class="figure" style="text-align: center"><span id="fig:about-tab"></span>
-<img src="about_tab.png" alt="About tab in the dashboard" width="100%" />
-<p class="caption">
-Figure 3: About tab in the dashboard
-</p>
+<div id="review-comments" class="section level3">
+<h3>Review Comments</h3>
+<ul>
+<li>All the functions inside this package do not provide any examples</li>
+<li>The <code>launch_app()</code> function inside this package can not run properly</li>
+<li>There is only one test which is a test for the <code>menu()</code> function, other functions have not been tested.</li>
+</ul>
 </div>
-<p>The plots and tables in the app will be changed based on the input selected by the users, and the plots and tables under each tab are related. So that the users can make corresponding adjustments according to the information they are interested in.</p>
-<p>Corresponding notes are included in the tabs, telling users how to select input, and what the output results of pictures and tables mean. Expanded explanations for some input selections. For example, users may not be able to accurately understand what Retail &amp; Recreation represents, for this reason, some of the examples of this place are provided in the notes.</p>
-<p>This app also provides more innovative content: <em>‘Change in Visitors by Category’</em>. Since most of the visualization since the pandemic is based on the number of cases and deaths. This content provides a new perspective which is what changes have been made in people’s lives after the pandemic.</p>
-</div>
-<div id="points-need-to-improve" class="section level2">
-<h2>Points need to improve</h2>
-<p>There are too many input choices under each tab, causing users may be confused by how to select the input and get the result as they expected. The inputs selection for a certain plot or table can be combined in a single box.</p>
-<div class="figure" style="text-align: center"><span id="fig:covid19-tab"></span>
-<img src="covid19_tab.png" alt="COVID-19 Cases/Deaths tab in the dashboard" width="100%" />
-<p class="caption">
-Figure 4: COVID-19 Cases/Deaths tab in the dashboard
-</p>
-</div>
-<p>The table under the COVID-19 Cases/Deaths tab (Refer to Figure <a href="#fig:covid19-tab">4</a>) will become longer as more countries been selected, cause the arrangement under this tab looking not tidy. And the <em>’Select Countries</em>’ option will change the two plots at the same time. It is not very reasonable to put the selection above the right plot. Also, it would be better if the title of the plot on the left can be modified when users changed their selections, that will make the tittle more relevant with the plot.</p>
-<div class="figure" style="text-align: center"><span id="fig:visitor-tab"></span>
-<img src="visitor_tab.png" alt="Change in Visitors by Category tab in the dashboard" width="100%" />
-<p class="caption">
-Figure 5: Change in Visitors by Category tab in the dashboard
-</p>
-</div>
-<p>Because the map under the Change in Visitors by Category tab (Refer to Figure <a href="#fig:visitor-tab">5</a>) is not large enough, and it is not possible to observe some countries or territories with a small area, such as countries in the European. It is a better choice to put the map under a new tab, or use <code>ggplotly</code> allows users to zoom in on specific locations according to their needs.</p>
-</div>
-<div id="things-plausible-to-add-in-the-app" class="section level2">
-<h2>Things plausible to add in the app</h2>
-<p>Although we are tired to watching the changes in the number of cases and deaths in the form of a map, it is still an effective way to visualise, and users can more intuitively to compare the difference on the numbers between the adjacent countries. In addition, the data are a time series, by using animation to display the changing on the numbers over time will be more efficient to observe the changing or trending at a certain period.</p>
-</div>
-<div id="limitation-of-the-data-and-technology" class="section level2">
-<h2>Limitation of the data and technology</h2>
-<p>Since the visitors’ raw data are provided by Google and Apple, there are many limitations and resections during the data collection. For example, Google map is not available in China and Chinese people mainly uses Baidu maps. This has caused the values in some of the countries are missing. The users will only be available to compare the countries which have available data.</p>
-<p>When creating this app, the original idea was to give the COVID-19 data of the corresponding country based on the click on the map. However, the horizontal and vertical coordinates of the same country are different when each time click on the map. For example, although Melbourne and Sydney are both in Australia, their geographic locations are different. A country can have countless coordinates, and the shape of each country is different. It is limited by the technology to accurately filter out the relevant information of that country based on the click on the map.</p>
 </div>
 </div>
 <div id="acknowledgement" class="section level1">
 <h1>Acknowledgement</h1>
-<p>Thanks for <em><a href="https://github.com/ishaberry/Covid19Canada">COVID-19 Canada Open Data Working Group</a></em> provided the COVID-19 datasets (<span class="citation">Berry I (2020)</span>), also thanks for <em>Hugo</em> to provide framework for building websites. Package used to create this blog is <span class="citation">Xie (2020)</span></p>
+<p>Thanks for <em>Hugo</em> to provide framework for building websites. Package used to create this blog is <span class="citation">Xie (2020)</span></p>
 </div>
 <div id="reference" class="section level1 unnumbered">
 <h1>Reference</h1>
 <div id="refs" class="references">
-<div id="ref-Covid19Canada">
-<p>Berry I, Tuite A, Soucy J-PR. 2020. “Covid19Canada.” <em>GitHub Repository</em>. <a href="https://github.com/ishaberry/Covid19Canada">https://github.com/ishaberry/Covid19Canada</a>; GitHub.</p>
-</div>
 <div id="ref-knitr">
 <p>Xie, Yihui. 2020. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.</p>
 </div>
@@ -877,7 +927,7 @@ Figure 5: Change in Visitors by Category tab in the dashboard
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/shiny-app-introduction-and-review/&amp;text=Shiny%20app%20Introduction%20and%20Review" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/post/r-package-review/&amp;text=R%20Package%20Review" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -890,7 +940,7 @@ Figure 5: Change in Visitors by Category tab in the dashboard
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/shiny-app-introduction-and-review/&amp;t=Shiny%20app%20Introduction%20and%20Review" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/post/r-package-review/&amp;t=R%20Package%20Review" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -903,7 +953,7 @@ Figure 5: Change in Visitors by Category tab in the dashboard
       
       
       <li>
-        <a href="mailto:?subject=Shiny%20app%20Introduction%20and%20Review&amp;body=/post/shiny-app-introduction-and-review/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=R%20Package%20Review&amp;body=/post/r-package-review/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -916,7 +966,7 @@ Figure 5: Change in Visitors by Category tab in the dashboard
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/shiny-app-introduction-and-review/&amp;title=Shiny%20app%20Introduction%20and%20Review" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/post/r-package-review/&amp;title=R%20Package%20Review" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -929,7 +979,7 @@ Figure 5: Change in Visitors by Category tab in the dashboard
       
       
       <li>
-        <a href="whatsapp://send?text=Shiny%20app%20Introduction%20and%20Review%20/post/shiny-app-introduction-and-review/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=R%20Package%20Review%20/post/r-package-review/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -942,7 +992,7 @@ Figure 5: Change in Visitors by Category tab in the dashboard
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/shiny-app-introduction-and-review/&amp;title=Shiny%20app%20Introduction%20and%20Review" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/post/r-package-review/&amp;title=R%20Package%20Review" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1098,7 +1148,7 @@ Figure 5: Change in Visitors by Category tab in the dashboard
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/post/r-package-review/">R Package Review</a></li>
+      <li><a href="/post/shiny-app-introduction-and-review/">Shiny app Introduction and Review</a></li>
       
       <li><a href="/post/covid-19-on-canada/">How is the Pandemic in Canada?</a></li>
       
