@@ -29,6 +29,13 @@ bibliography: references.bib
 <p>This blog reviews a package which is called <code>phyllispkg</code>, the creator of this package is Peimin Lin. The <code>phyllispkg</code> package can be found via <a href="https://github.com/etc5523-2020/r-package-assessment-Phyllis-Lin">Github</a> or install it by using the following code:</p>
 <pre><code>devtools::install_github(&quot;etc5523-2020/r-package-assessment-Phyllis-Lin&quot;)</code></pre>
 <p>This package aims to provide COVID-19 shiny app. It also provides relevant functions which are used to in this shiny app’s UI and Sever, also the relevant datasets of COVID-19.</p>
+<p>There are four functions inside the package which are:</p>
+<ul>
+<li><code>launch_app()</code>: Launch the shiny app inside the package</li>
+<li><code>leaf_output()</code>: Builds leaflet map</li>
+<li><code>radio_input()</code>: Builds a radio button to select the type of cases</li>
+<li><code>menu()</code>: Add menu and icon in the sidebar menu</li>
+</ul>
 </div>
 <div id="what-did-i-think-this-package-would-do-did-it-do-it" class="section level1">
 <h1>What did I think this package would do? Did it do it?</h1>
@@ -89,7 +96,7 @@ Figure 3: Error message when run the shiny app
 Figure 4: Map tab in the shiny app
 </p>
 </div>
-<p>According to the shiny app inside the package, we can observe that the data used to make the map does not seem to be consistent. As shown in Figure <a href="#fig:map">4</a>, as the green arrow points out that the number in the United States are counted as a whole, but the red arrow points out that in the Australia numbers are counted for each state. It may mislead the users when they use this map or data to make a comparison.</p>
+<p>According to the shiny app inside the package, we can observe that the data used to make the map does not seem to be consistent. As shown in Figure <a href="#fig:map">4</a>, as the green arrow points out that the number in the United States are counted as a whole, but the red arrow points out that in the Australia numbers are counted for each state. It may mislead the users when they use this map or data to make a comparison. It is also worth noting that there are no comments or notes under each tab of “Plot”, “Map”, and “Table” which are used tell the users how to change the corresponding inputs, and what the outputs of plots or tables are. The users may be confused by the inputs and outputs if they do not understand the data very well.</p>
 </div>
 <div id="is-the-documentation-sufficient-to-get-started" class="section level2">
 <h2>Is the documentation sufficient to get started?</h2>

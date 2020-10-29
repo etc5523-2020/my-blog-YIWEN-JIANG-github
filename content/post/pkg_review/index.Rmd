@@ -31,6 +31,13 @@ devtools::install_github("etc5523-2020/r-package-assessment-Phyllis-Lin")
 
 This package aims to provide COVID-19 shiny app. It also provides relevant functions which are used to in this shiny app’s UI and Sever, also the relevant datasets of COVID-19.
 
+There are four functions inside the package which are:
+
+- `launch_app()`: Launch the shiny app inside the package
+- `leaf_output()`: Builds leaflet map
+- `radio_input()`: Builds a radio button to select the type of cases
+- `menu()`: Add menu and icon in the sidebar menu
+
 # What did I think this package would do? Did it do it?
 
 What I expected of this `phyllispkg` package would do includes the following aspects. It can run the COVID-19 shiny app appropriately and all the plots and tables in the app are working well. The functions in the package can be used to produce this shiny app and also used in another situation. Full documentation to explain how to use the functions and datasets in `phyllispkg` package.
@@ -93,7 +100,7 @@ After going through all the `R.script` which are related to run this shiny app, 
 knitr::include_graphics("map.png")
 ```
 
-According to the shiny app inside the package, we can observe that the data used to make the map does not seem to be consistent. As shown in Figure \@ref(fig:map), as the green arrow points out that the number in the United States are counted as a whole, but the red arrow points out that in the Australia numbers are counted for each state. It may mislead the users when they use this map or data to make a comparison.
+According to the shiny app inside the package, we can observe that the data used to make the map does not seem to be consistent. As shown in Figure \@ref(fig:map), as the green arrow points out that the number in the United States are counted as a whole, but the red arrow points out that in the Australia numbers are counted for each state. It may mislead the users when they use this map or data to make a comparison. It is also worth noting that there are no comments or notes under each tab of "Plot", "Map", and "Table” which are used tell the users how to change the corresponding inputs, and what the outputs of plots or tables are. The users may be confused by the inputs and outputs if they do not understand the data very well.
 
 ## Is the documentation sufficient to get started?
 

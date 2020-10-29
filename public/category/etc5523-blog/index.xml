@@ -28,6 +28,13 @@
 &lt;p&gt;This blog reviews a package which is called &lt;code&gt;phyllispkg&lt;/code&gt;, the creator of this package is Peimin Lin. The &lt;code&gt;phyllispkg&lt;/code&gt; package can be found via &lt;a href=&#34;https://github.com/etc5523-2020/r-package-assessment-Phyllis-Lin&#34;&gt;Github&lt;/a&gt; or install it by using the following code:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;devtools::install_github(&amp;quot;etc5523-2020/r-package-assessment-Phyllis-Lin&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This package aims to provide COVID-19 shiny app. It also provides relevant functions which are used to in this shiny app’s UI and Sever, also the relevant datasets of COVID-19.&lt;/p&gt;
+&lt;p&gt;There are four functions inside the package which are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;launch_app()&lt;/code&gt;: Launch the shiny app inside the package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;leaf_output()&lt;/code&gt;: Builds leaflet map&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;radio_input()&lt;/code&gt;: Builds a radio button to select the type of cases&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;menu()&lt;/code&gt;: Add menu and icon in the sidebar menu&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;what-did-i-think-this-package-would-do-did-it-do-it&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;What did I think this package would do? Did it do it?&lt;/h1&gt;
@@ -88,7 +95,7 @@ Figure 3: Error message when run the shiny app
 Figure 4: Map tab in the shiny app
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;According to the shiny app inside the package, we can observe that the data used to make the map does not seem to be consistent. As shown in Figure &lt;a href=&#34;#fig:map&#34;&gt;4&lt;/a&gt;, as the green arrow points out that the number in the United States are counted as a whole, but the red arrow points out that in the Australia numbers are counted for each state. It may mislead the users when they use this map or data to make a comparison.&lt;/p&gt;
+&lt;p&gt;According to the shiny app inside the package, we can observe that the data used to make the map does not seem to be consistent. As shown in Figure &lt;a href=&#34;#fig:map&#34;&gt;4&lt;/a&gt;, as the green arrow points out that the number in the United States are counted as a whole, but the red arrow points out that in the Australia numbers are counted for each state. It may mislead the users when they use this map or data to make a comparison. It is also worth noting that there are no comments or notes under each tab of “Plot”, “Map”, and “Table” which are used tell the users how to change the corresponding inputs, and what the outputs of plots or tables are. The users may be confused by the inputs and outputs if they do not understand the data very well.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;is-the-documentation-sufficient-to-get-started&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Is the documentation sufficient to get started?&lt;/h2&gt;
