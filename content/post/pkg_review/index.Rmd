@@ -152,7 +152,7 @@ The package includes all the following forms of documentation:
 
 # Acknowledgement
 
-Thanks for _Hugo_ to provide framework for building websites. Package used to create this blog is @knitr
+Thanks for _Hugo_ to provide framework for building websites, also thanks for _Peimin Lin_ to provide to provide this wonderful package (@phyllispkg). Package used to create this blog is @knitr. 
 
 # Reference
 

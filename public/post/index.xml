@@ -154,11 +154,14 @@ As the reviewer I confirm that there are no &lt;a href=&#34;https://devguide.rop
 &lt;/div&gt;
 &lt;div id=&#34;acknowledgement&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Acknowledgement&lt;/h1&gt;
-&lt;p&gt;Thanks for &lt;em&gt;Hugo&lt;/em&gt; to provide framework for building websites. Package used to create this blog is &lt;span class=&#34;citation&#34;&gt;Xie (2020)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Thanks for &lt;em&gt;Hugo&lt;/em&gt; to provide framework for building websites, also thanks for &lt;em&gt;Peimin Lin&lt;/em&gt; to provide to provide this wonderful package (&lt;span class=&#34;citation&#34;&gt;Lin (2020)&lt;/span&gt;). Package used to create this blog is &lt;span class=&#34;citation&#34;&gt;Xie (2020)&lt;/span&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;reference&#34; class=&#34;section level1 unnumbered&#34;&gt;
 &lt;h1&gt;Reference&lt;/h1&gt;
 &lt;div id=&#34;refs&#34; class=&#34;references&#34;&gt;
+&lt;div id=&#34;ref-phyllispkg&#34;&gt;
+&lt;p&gt;Lin, Peimin. 2020. “Phyllispkg.” &lt;em&gt;GitHub Repository&lt;/em&gt;. &lt;a href=&#34;https://github.com/etc5523-2020/r-package-assessment-Phyllis-Lin.git&#34;&gt;https://github.com/etc5523-2020/r-package-assessment-Phyllis-Lin.git&lt;/a&gt;; GitHub.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div id=&#34;ref-knitr&#34;&gt;
 &lt;p&gt;Xie, Yihui. 2020. &lt;em&gt;Knitr: A General-Purpose Package for Dynamic Report Generation in R&lt;/em&gt;. &lt;a href=&#34;https://yihui.org/knitr/&#34;&gt;https://yihui.org/knitr/&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
